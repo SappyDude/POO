@@ -1,0 +1,2 @@
+git pull origin main // (originar una sincronizacion en los archivos)
+uso de git GUI para el push de archivos al repositorio

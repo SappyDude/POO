@@ -16,14 +16,18 @@ public class Lectura {
         Scanner objScanner = new Scanner (System.in);
         System.out.println("Digite los nombres: ");
         nombres = objScanner.nextLine(); //leer
+        
         System.out.println("Digite los apellidos");
         apellidos = objScanner.nextLine(); //leer 
+        
         System.out.println("Digite su salario: ");
         salario = objScanner.nextFloat();
+        
         do {            
             System.out.println("Digite la edad");
             edad = objScanner.nextInt();
         } while (edad < 0);
+        
         do {            
         System.out.println("Digite su género");
         genero = objScanner.nextLine().charAt(0);

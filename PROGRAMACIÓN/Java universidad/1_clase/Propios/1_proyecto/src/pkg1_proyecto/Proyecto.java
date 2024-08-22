@@ -39,7 +39,7 @@ public class Proyecto {
     }
     
    
-    
+    //obtención de los valores privados y su interacción 
     public int getnumero1() {
         return this.numero1;
     }

@@ -8,7 +8,7 @@ public class Main {
 // instanciar: decirle a la memoria cuanto va a ocupar
 
         edades = new int[3]; //tamaño 3
-        
+
         edades[0] = 30;
         edades[1] = 15;
         edades[2] = 20;

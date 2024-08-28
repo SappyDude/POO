@@ -1,7 +1,8 @@
 package pkg1_proyecto;
+
 /* @author SappyDude */
 public class Proyecto {
-    
+
 // Atributos
     private int numero1, numero2;
 
@@ -37,23 +38,21 @@ public class Proyecto {
             return String.valueOf(this.numero1 / this.numero2);
         }
     }
-    
-   
+
     //obtención de los valores privados y su interacción 
     public int getnumero1() {
         return this.numero1;
     }
-    
+
     public void setnumero1(int numero1) {
         this.numero1 = numero1;
     }
-    
+
     public int getNumero2() {
         return this.numero2;
     }
-    
-    public void setNumero2(int numero2){
+
+    public void setNumero2(int numero2) {
         this.numero2 = numero2;
     }
-}  
-
+}

@@ -1,21 +1,22 @@
 package com.gm.ventas;
+//Backend
 
 public class Producto {
-    //Atributos
+
+    //Atributes
     private int idProducto;
     private String nombre;
     private double precio;
-    
-    
-    //Constructor vacío 
-    public Producto(){
-    this.idProducto = 0;
-    this.nombre = "";
-    this.precio = 0;
+
+    //empty builder
+    public Producto() {
+        this.idProducto = 0;
+        this.nombre = "";
+        this.precio = 0;
     }
-    
-    //Constructor con parámetros
-    public Producto(String nombre, double precio){
+
+    //builder with parameters
+    public Producto(String nombre, double precio) {
         this.nombre = nombre;
         this.precio = precio;
     }
@@ -45,10 +46,11 @@ public class Producto {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+
     //toString
     @Override
     public String toString() {
         return "Producto{" + "idProducto=" + idProducto + ", nombre=" + nombre + ", precio=" + precio + '}';
     }
-    
+
 }

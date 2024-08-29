@@ -1,24 +1,24 @@
 package com.gm.ventas;
-
+//Backend
 
 public class Orden {
+
     //Atributos
     private int idOrden;
     private Producto[] productos;
     private int contadorProductos;
     private static int cantidadArray = 10;
-    
-    
+
     //Constructor vacío
-    public Orden(){
+    public Orden() {
         this.idOrden = 0;
         this.productos = new Producto[cantidadArray];
         this.contadorProductos = 0;
     }
-    
+
     //Métodos (Funciones)
-    public boolean agregarProducto(Producto producto){
-        if ( contadorProductos < productos.length) {
+    public boolean agregarProducto(Producto producto) {
+        if (contadorProductos < productos.length) {
             productos[contadorProductos++] = producto;
             return true;
         } else {
@@ -26,22 +26,22 @@ public class Orden {
             return false;
         }
     }
-    
-    public double calcularTotal(){
+
+    public double calcularTotal() {
         double total = 0;
         for (int i = 0; i < contadorProductos; i++) {
             total += productos[i].getPrecio();
         }
         return total;
     }
-    
-    public void mostrarOrden(){
+
+    public void mostrarOrden() {
         System.out.println("Id de la orden: " + idOrden);
         for (int i = 0; i < contadorProductos; i++) {
-            System.out.println(productos[i]);            
-        }        
+            System.out.println(productos[i]);
+        }
     }
-    
+
     //Gets
     public int getIdOrden() {
         return idOrden;
@@ -75,6 +75,5 @@ public class Orden {
     public static void setCantidadArray(int cantidadArray) {
         Orden.cantidadArray = cantidadArray;
     }
-    
+
 }
-    

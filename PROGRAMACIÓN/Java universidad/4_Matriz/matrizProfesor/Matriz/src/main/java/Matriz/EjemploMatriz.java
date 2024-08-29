@@ -28,7 +28,7 @@ public class EjemploMatriz {
                 System.out.println("Matriz edades indice:" + i + " - " + j + ": " + edades[i][j]);
         }
 
-        // Matris de objetos de la clase Persona
+        // Matriz de objetos de la clase Persona
 
         // 1 Declarar
         Persona personas[][] = new Persona[3][2];

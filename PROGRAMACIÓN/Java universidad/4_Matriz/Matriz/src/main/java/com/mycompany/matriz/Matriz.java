@@ -16,6 +16,8 @@ public class Matriz {
         edades[1][1] = 45;
         edades[2][0] = 5;
         edades[2][0] = 1;
+        
+        
         //aqui se declara y se instancia al mismo tiempo
         Persona personas [][] = new Persona [2][3];
         //se le designa un nuevo objeto al constructor

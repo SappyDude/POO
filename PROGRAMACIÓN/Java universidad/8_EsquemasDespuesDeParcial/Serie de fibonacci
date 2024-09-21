@@ -1,0 +1,27 @@
+cd C:\Users\dhyst\Documents\NetBeansProjects\fibonacci; "JAVA_HOME=C:\\Program Files\\Java\\jdk-22" cmd /c "\"C:\\Program Files\\NetBeans-22\\netbeans\\java\\maven\\bin\\mvn.cmd\" -Dexec.vmArgs= \"-Dexec.args=${exec.vmArgs} -classpath %classpath ${exec.mainClass} ${exec.appArgs}\" -Dexec.appArgs= -Dexec.mainClass=com.mycompany.fibonacci.Fibonacci \"-Dexec.executable=C:\\Program Files\\Java\\jdk-22\\bin\\java.exe\" \"-Dmaven.ext.class.path=C:\\Program Files\\NetBeans-22\\netbeans\\java\\maven-nblib\\netbeans-eventspy.jar\" --no-transfer-progress process-classes org.codehaus.mojo:exec-maven-plugin:3.1.0:exec"
+Scanning for projects...
+
+----------------------< com.mycompany:fibonacci >-----------------------
+Building fibonacci 1.0-SNAPSHOT
+  from pom.xml
+--------------------------------[ jar ]---------------------------------
+
+--- resources:3.3.1:resources (default-resources) @ fibonacci ---
+skip non existing resourceDirectory C:\Users\dhyst\Documents\NetBeansProjects\fibonacci\src\main\resources
+
+--- compiler:3.11.0:compile (default-compile) @ fibonacci ---
+Changes detected - recompiling the module! :source
+Compiling 1 source file with javac [debug target 22] to target\classes
+
+--- exec:3.1.0:exec (default-cli) @ fibonacci ---
+Ingrese la cantidad que desea saber con la serie de fibonacci
+3
+0
+1
+1
+------------------------------------------------------------------------
+BUILD SUCCESS
+------------------------------------------------------------------------
+Total time:  5.952 s
+Finished at: 2024-09-12T10:18:21-05:00
+------------------------------------------------------------------------

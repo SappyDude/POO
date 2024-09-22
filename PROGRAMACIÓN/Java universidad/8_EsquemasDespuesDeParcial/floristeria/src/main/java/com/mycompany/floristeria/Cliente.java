@@ -1,11 +1,11 @@
 package com.mycompany.floristeria;
 
+
 public class Cliente {
 //atributos
-
     private int idCliente;
     private String nombreUsuario, direccion, correo;
-
+     
 //contructor con parametros
     public Cliente(int idCliente, String nombreUsuario, String direccion, String correo) {
         this.idCliente = idCliente;

@@ -6,12 +6,15 @@ import java.util.Scanner;
 public class Floristeria {
 
     public static void main(String[] args) {
-//Clases llamadas
+//Objetos llamados
         Scanner teclado = new Scanner(System.in);
         Cliente c1 = new Cliente();
-        Flor f1 = new Flor(2000, 1, "rosa");
-        Flor f2 = new Flor(2100, 1, "amapola");
-        Flor f3 = new Flor(1900, 1, "tulipan");
+        Flor f1 = new Flor(2000, "rosa");
+        Flor f2 = new Flor(2100, "amapola");
+        Flor f3 = new Flor(1900, "tulipan");
+        Flor f4 = new Flor(3000, "girasol");
+        Flor f5 = new Flor(3500, "lirio");
+        Flor f6 = new Flor(4000, "flor de loto");
         Arreglo r1 = new Arreglo("Maceta moldeada a mano", "Arreglo artesanal");
         Arreglo r2 = new Arreglo("Maceta prefrabricada", "Arreglo prefabricado");
 
@@ -19,9 +22,15 @@ public class Floristeria {
         r1.addFlores(f1);
         r1.addFlores(f2);
         r1.addFlores(f3);
+        r2.addFlores(f4);
+        r2.addFlores(f5);
+        r2.addFlores(f6);
+
+//Adición de arreglos a conjunto de ellos
         ArrayList<Arreglo> arreglos = new ArrayList<Arreglo>();
         arreglos.add(r1);
         arreglos.add(r2);
+
 //Atributos
         boolean checker = false;
         int selection = 0;
@@ -87,15 +96,21 @@ public class Floristeria {
         System.out.println("Bienvenido " + c1.getNombreUsuario());
 
 //Pedir las flores
+        mostrarArreglos(arreglos);
         do {
 //trycatch: toma cierto tipo de dato, 
             try {
                 checker = false;
-                System.out.println("que pedido desea realizar?");
-                mostrarArreglos(arreglos);
+                System.out.println("elija el numero del arreglo deseado");
 
                 selection = teclado.nextInt();
-                System.out.println("Has ingresado la opcion: " + selection);
+                if (selection > 0 && selection <= arreglos.size()) {
+                    System.out.println("Has ingresado el arreglo: " + arreglos.get(selection-1).getNombreArreglo());
+                } else {
+                    checker = true;
+                    System.out.println("El valor introducido no corresponde a ningun arreglo");
+                }
+
 //segun el tipo de error que lance la consola, se le asigna como parametro
 //el "e" es el nombre de lo que recibe, en este caso seria los scanners.
 //el inputmismatchexception es tipo de exception arrojado por la consola 
@@ -106,7 +121,8 @@ public class Floristeria {
             }
         } while (checker);
 
-//Proceso para hacer la factura 
+//Proceso para hacer la factura  
+
     }
 
     public static void mostrarArreglos(ArrayList<Arreglo> arreglos) {
@@ -115,11 +131,9 @@ public class Floristeria {
             System.out.println("Arreglos disponibles: " + arreglos.get(i).getNombreArreglo());
             System.out.println("Arreglo Nro:    " + (i + 1));
             System.out.println("Flores: ");
-            for (int j = 0; j < arreglos.size(); j++) {
-                arreglos.get(i).mostrarFlores();
-            }
-
+            arreglos.get(i).mostrarFlores();
             System.out.println("Precio:         ");
+            arreglos.get(i).calcularPrecio();
             System.out.println("Tipo de maceta: " + arreglos.get(i).getMaceta());
             System.out.println("    ");
         }
@@ -128,10 +142,11 @@ public class Floristeria {
 
 // por otra parte, la condicion logica checker, la toma directa como un boolean
 //, por lo que, si es verdad, lo sigue ejecutando, si es falso, sale del ciclo
+
 //Pendiente:
 //implementacion del historial
 //volver a pedir el producto 
-//los arreglos son listas
+
 /*utilidad: gestionar los pedidios de arreglos florales que tienen los clientes
 En un pedido debe ir:
 Id numero

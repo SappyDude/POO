@@ -3,7 +3,7 @@ package com.gm.ventas;
 
 public class Producto {
 
-    //Atributes
+    //Attributes
     private int idProducto;
     private String nombre;
     private double precio;

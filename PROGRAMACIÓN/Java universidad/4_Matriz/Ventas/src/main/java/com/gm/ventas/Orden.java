@@ -7,7 +7,7 @@ public class Orden {
     private int idOrden;
     private Producto[] productos;//Declarar 
     private int contadorProductos;
-    private static int cantidadArray = 10;//constante con el uso de: (static)
+    private static int cantidadArray = 10;//se convierte en una constante con el uso de static
 
     //Constructor vacío
     public Orden() {
@@ -26,7 +26,6 @@ public class Orden {
             return false;
         }
     }
-//
 
     public double calcularTotal() {
         double total = 0;
@@ -36,7 +35,6 @@ public class Orden {
         }
         return total;
     }
-//
 
     public void mostrarOrden() {
         System.out.println("Id de la orden: " + idOrden);
@@ -61,8 +59,8 @@ public class Orden {
     public static int getCantidadArray() {
         return cantidadArray;
     }
+    
     //Sets
-
     public void setIdOrden(int idOrden) {
         this.idOrden = idOrden;
     }
@@ -74,10 +72,11 @@ public class Orden {
     public void setContadorProductos(int contadorProductos) {
         this.contadorProductos = contadorProductos;
     }
-
+    
+//uso de public static no requiere un set, (mala práctica)
     public static void setCantidadArray(int cantidadArray) {
         Orden.cantidadArray = cantidadArray;
+        
     }
-    //uso de public static no requiere un set, (mala práctica)
-
+    
 }

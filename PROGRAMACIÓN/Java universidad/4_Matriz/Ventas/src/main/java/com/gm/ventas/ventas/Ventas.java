@@ -10,17 +10,19 @@ public class Ventas {
 
 //main
     public static void main(String[] args) {
-//creation of object and assign the products identifiers.
+
         Scanner Escaneador = new Scanner(System.in);
         Orden ordenPedido = new Orden();
+
         Producto producto1 = new Producto("pan", 600);
         producto1.setIdProducto(1);
-        
+
         Producto producto2 = new Producto("papas", 1100);
         producto2.setIdProducto(2);
-        
-        Producto producto3 = new Producto("leche", 3000);
+
+        Producto producto3 = new Producto("leche", 4000);
         producto3.setIdProducto(3);
+//creación de los objetos y su designación en el id de cada uno
 
 //select menu
         System.out.println("Seleccione uno de los siguientes productos que desee comprar:");
@@ -43,7 +45,7 @@ public class Ventas {
                     System.out.println("desea ingresar otro producto?");
                     System.out.println("true/false");
                     condition = Escaneador.nextBoolean();
-
+                    Escaneador.nextLine();
                 }
                 case "papas" -> {
                     System.out.println("elegiste papas");
@@ -66,11 +68,11 @@ public class Ventas {
                     condition = true;
                 }
             }
-            /*el uso de nextboolean, lee la linea pero no "limpia" el valor en la memoria del buffer, por ello
-  utilizamos el metodo Escaneador.nextln();, donde este si hace la funcion de limpiar el buffer*/
+            /*el uso de nextboolean, lee la línea pero no "limpia" el valor en la memoria del buffer, por ello
+  utilizamos el método Escaneador.nextln();, donde este si hace la función de limpiar el buffer*/
 
         } while (condition != false);
-
+        // apenas sea falso, sale del dowhile para hacer el cálculo de los productos
         ordenPedido.mostrarOrden();
         System.out.println("El total de su compra es: " + ordenPedido.calcularTotal() + " Pesos");
     }

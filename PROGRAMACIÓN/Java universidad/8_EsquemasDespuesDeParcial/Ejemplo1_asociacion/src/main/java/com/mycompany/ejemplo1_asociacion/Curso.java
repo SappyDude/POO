@@ -52,10 +52,10 @@ public class Curso {
         return estudiantes;
     }
 
-    public void agregarEstudiante (Estudiante estudiante){
+    public void agregarEstudiante(Estudiante estudiante) {
         estudiantes.add(estudiante);
-    }    
-    
+    }
+
     public void mostrarEstudiantes() {
         System.out.println("Estudiantes del curso: " + nombre);
         for (int i = 0; i < estudiantes.size(); i++) {
@@ -65,10 +65,9 @@ public class Curso {
             System.out.println("    Genero:    " + estudiantes.get(i).getGenero());
         }
     }
-    
-    public void mostrarProfesor(){
-        System.out.println("Profesor: " + profesor.getNombre() +". Edad: " + profesor.getEdad());
+
+    public void mostrarProfesor() {
+        System.out.println("Profesor: " + profesor.getNombre() + ". Edad: " + profesor.getEdad());
     }
-    
 
 }

@@ -40,5 +40,5 @@ public class Flor {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    
 }

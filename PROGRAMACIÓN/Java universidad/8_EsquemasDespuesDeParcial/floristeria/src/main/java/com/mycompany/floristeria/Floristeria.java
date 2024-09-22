@@ -1,5 +1,6 @@
 package com.mycompany.floristeria;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Floristeria {
@@ -8,12 +9,22 @@ public class Floristeria {
 //Clases llamadas
         Scanner teclado = new Scanner(System.in);
         Cliente c1 = new Cliente();
+        Flor f1 = new Flor(2000, 1, "rosa");
+        Flor f2 = new Flor(2100, 1, "amapola");
+        Flor f3 = new Flor(1900, 1, "tulipan");
+        Arreglo r1 = new Arreglo("Maceta moldeada a mano", "Arreglo artesanal");
+        Arreglo r2 = new Arreglo("Maceta prefrabricada", "Arreglo prefabricado");
 
+//Adición de las flores a los arreglos
+        r1.addFlores(f1);
+        r1.addFlores(f2);
+        r1.addFlores(f3);
+        ArrayList<Arreglo> arreglos = new ArrayList<Arreglo>();
+        arreglos.add(r1);
+        arreglos.add(r2);
 //Atributos
         boolean checker = false;
         int selection = 0;
-        Flor f1 = new Flor();
-//Interfaz usuario:
 
 //Datos del usuario
 //Id
@@ -21,14 +32,15 @@ public class Floristeria {
             try {
                 checker = false;
                 System.out.println("Ingrese su numero de identificacion");
+
                 c1.setIdCliente(teclado.nextInt());
             } catch (Exception e) {
+                System.out.println("");
                 System.out.println("Introduzca el valor pedido");
                 teclado.next();
                 checker = true;
             }
         } while (checker);
-
 //Nombre del usuario
         do {
             try {
@@ -37,6 +49,7 @@ public class Floristeria {
                 String nombre = teclado.next();
 
                 if (nombre.matches(".*\\d.*")) {
+                    System.out.println("");
                     throw new IllegalArgumentException("Ingresar un nombre real");
                 }
 
@@ -47,8 +60,7 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
-
-//direccion:
+//direccion
         do {
             try {
                 checker = false;
@@ -60,8 +72,7 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
-
-//correo:
+//correo
         do {
             try {
                 checker = false;
@@ -81,13 +92,11 @@ public class Floristeria {
             try {
                 checker = false;
                 System.out.println("que pedido desea realizar?");
-                System.out.println("(1)Ramo");
-                System.out.println("(2)Centro de mesa");
-                System.out.println("(3)Flores individuales");
+                mostrarArreglos(arreglos);
 
                 selection = teclado.nextInt();
                 System.out.println("Has ingresado la opcion: " + selection);
-//segun el tipo de error que lance la consola, se le asigna el inputmismatchexception
+//segun el tipo de error que lance la consola, se le asigna como parametro
 //el "e" es el nombre de lo que recibe, en este caso seria los scanners.
 //el inputmismatchexception es tipo de exception arrojado por la consola 
             } catch (Exception e) {
@@ -97,12 +106,31 @@ public class Floristeria {
             }
         } while (checker);
 
+//Proceso para hacer la factura 
     }
-    // por otra parte, la condicion logica checker, la toma directa como un boolean
-    //, por lo que, si es verdad, lo sigue ejecutando, si es falso, sale del ciclo
 
+    public static void mostrarArreglos(ArrayList<Arreglo> arreglos) {
+
+        for (int i = 0; i < arreglos.size(); i++) {
+            System.out.println("Arreglos disponibles: " + arreglos.get(i).getNombreArreglo());
+            System.out.println("Arreglo Nro:    " + (i + 1));
+            System.out.println("Flores: ");
+            for (int j = 0; j < arreglos.size(); j++) {
+                arreglos.get(i).mostrarFlores();
+            }
+
+            System.out.println("Precio:         ");
+            System.out.println("Tipo de maceta: " + arreglos.get(i).getMaceta());
+            System.out.println("    ");
+        }
+    }
 }
 
+// por otra parte, la condicion logica checker, la toma directa como un boolean
+//, por lo que, si es verdad, lo sigue ejecutando, si es falso, sale del ciclo
+//Pendiente:
+//implementacion del historial
+//volver a pedir el producto 
 //los arreglos son listas
 /*utilidad: gestionar los pedidios de arreglos florales que tienen los clientes
 En un pedido debe ir:

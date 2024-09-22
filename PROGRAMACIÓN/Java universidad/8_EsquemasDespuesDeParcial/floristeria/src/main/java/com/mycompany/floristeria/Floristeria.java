@@ -44,9 +44,9 @@ public class Floristeria {
 
                 c1.setIdCliente(teclado.nextInt());
             } catch (Exception e) {
-                System.out.println("");
                 System.out.println("Introduzca el valor pedido");
-                teclado.next();
+                System.out.println("");
+                teclado.nextLine();
                 checker = true;
             }
         } while (checker);
@@ -58,7 +58,6 @@ public class Floristeria {
                 String nombre = teclado.next();
 
                 if (nombre.matches(".*\\d.*")) {
-                    System.out.println("");
                     throw new IllegalArgumentException("Ingresar un nombre real");
                 }
 
@@ -94,35 +93,72 @@ public class Floristeria {
             }
         } while (checker);
         System.out.println("Bienvenido " + c1.getNombreUsuario());
-
-//Pedir las flores
-        mostrarArreglos(arreglos);
         do {
+//eleccion del arreglo 
+            mostrarArreglos(arreglos);
+            do {
 //trycatch: toma cierto tipo de dato, 
-            try {
-                checker = false;
-                System.out.println("elija el numero del arreglo deseado");
+                try {
+                    checker = false;
+                    System.out.println("elija el numero del arreglo deseado");
 
-                selection = teclado.nextInt();
-                if (selection > 0 && selection <= arreglos.size()) {
-                    System.out.println("Has ingresado el arreglo: " + arreglos.get(selection-1).getNombreArreglo());
-                } else {
-                    checker = true;
-                    System.out.println("El valor introducido no corresponde a ningun arreglo");
-                }
+                    selection = teclado.nextInt();
+                    if (selection > 0 && selection <= arreglos.size()) {
+                        System.out.println("Has ingresado el arreglo: " + arreglos.get(selection - 1).getNombreArreglo());
+                    } else {
+                        checker = true;
+                        System.out.println("El valor introducido no corresponde a ningun arreglo");
+                    }
 
 //segun el tipo de error que lance la consola, se le asigna como parametro
 //el "e" es el nombre de lo que recibe, en este caso seria los scanners.
 //el inputmismatchexception es tipo de exception arrojado por la consola 
-            } catch (Exception e) {
-                System.out.println("Porfavor ingrese un valor de los permitidos");
-                teclado.next();
-                checker = true;
-            }
+                } catch (Exception e) {
+                    System.out.println("Porfavor ingrese un valor de los permitidos");
+                    teclado.next();
+                    checker = true;
+                }
+            } while (checker);
+//volver a comprar            
+            System.out.println("Desea comprar algun otro producto?");
+
+            boolean checkerbuy = true;
+            do {
+
+                try {
+                    System.out.println("Seleccionar");
+                    System.out.println("SI(S)/NO(N)");
+                    checkerbuy = true;
+
+                    char rebuy = teclado.next().charAt(0);
+
+                    switch (rebuy) {
+                        case 's':
+                            checkerbuy = false;
+                            checker = true;
+                            System.out.println("entra");
+                            break;
+                        case 'n':
+                            checkerbuy = false;
+                            checker = false;
+
+                            System.out.println("sale");
+                            break;
+                        default:
+                            System.out.println("Ponga un valor real");
+                            throw new Exception();
+                    }
+                } catch (Exception e) {
+                    checkerbuy = true;
+                    teclado.next();
+                    System.out.println("Decida si va a seguir comprando");
+                }
+            } while (checkerbuy);
+
         } while (checker);
+//Pedir las flores
 
 //Proceso para hacer la factura  
-
     }
 
     public static void mostrarArreglos(ArrayList<Arreglo> arreglos) {
@@ -142,7 +178,6 @@ public class Floristeria {
 
 // por otra parte, la condicion logica checker, la toma directa como un boolean
 //, por lo que, si es verdad, lo sigue ejecutando, si es falso, sale del ciclo
-
 //Pendiente:
 //implementacion del historial
 //volver a pedir el producto 

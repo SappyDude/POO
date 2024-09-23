@@ -2,6 +2,8 @@ package com.mycompany.floristeria;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Floristeria {
 
@@ -33,14 +35,21 @@ public class Floristeria {
 
 //Atributos
         boolean checker = false;
+        boolean checkerbuy = true;
         int selection = 0;
+        LocalDate fechaActual = LocalDate.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaFormateada = fechaActual.format(formato);
 
 //Datos del usuario
 //Id
+        System.out.println("Bienvenido a la floristeria 'El palacio de las flores'");
+        System.out.println("Porfavor, introduzca sus datos de usuario");
+        System.out.println("                                         ");
         do {
             try {
                 checker = false;
-                System.out.println("Ingrese su numero de identificacion");
+                System.out.println("Numero de identificacion");
 
                 c1.setIdCliente(teclado.nextInt());
             } catch (Exception e) {
@@ -92,12 +101,13 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
-        System.out.println("Bienvenido " + c1.getNombreUsuario());
+
+//Compras
+        System.out.println("Bienvenido, " + c1.getNombreUsuario());
         do {
 //eleccion del arreglo 
             mostrarArreglos(arreglos);
             do {
-//trycatch: toma cierto tipo de dato, 
                 try {
                     checker = false;
                     System.out.println("elija el numero del arreglo deseado");
@@ -110,9 +120,6 @@ public class Floristeria {
                         System.out.println("El valor introducido no corresponde a ningun arreglo");
                     }
 
-//segun el tipo de error que lance la consola, se le asigna como parametro
-//el "e" es el nombre de lo que recibe, en este caso seria los scanners.
-//el inputmismatchexception es tipo de exception arrojado por la consola 
                 } catch (Exception e) {
                     System.out.println("Porfavor ingrese un valor de los permitidos");
                     teclado.next();
@@ -120,33 +127,24 @@ public class Floristeria {
                 }
             } while (checker);
 //volver a comprar            
+
             System.out.println("Desea comprar algun otro producto?");
 
-            boolean checkerbuy = true;
             do {
-
                 try {
                     System.out.println("Seleccionar");
                     System.out.println("SI(S)/NO(N)");
                     checkerbuy = true;
-
                     char rebuy = teclado.next().charAt(0);
-
                     switch (rebuy) {
                         case 's':
                             checkerbuy = false;
                             checker = true;
-                            System.out.println("entra");
                             break;
                         case 'n':
                             checkerbuy = false;
                             checker = false;
-
-                            System.out.println("sale");
                             break;
-                        default:
-                            System.out.println("Ponga un valor real");
-                            throw new Exception();
                     }
                 } catch (Exception e) {
                     checkerbuy = true;
@@ -156,9 +154,8 @@ public class Floristeria {
             } while (checkerbuy);
 
         } while (checker);
-//Pedir las flores
-
 //Proceso para hacer la factura  
+
     }
 
     public static void mostrarArreglos(ArrayList<Arreglo> arreglos) {
@@ -176,48 +173,14 @@ public class Floristeria {
     }
 }
 
-// por otra parte, la condicion logica checker, la toma directa como un boolean
-//, por lo que, si es verdad, lo sigue ejecutando, si es falso, sale del ciclo
 //Pendiente:
 //implementacion del historial
 //volver a pedir el producto 
 
-/*utilidad: gestionar los pedidios de arreglos florales que tienen los clientes
-En un pedido debe ir:
-Id numero
-nombre
-direccion
-correo electronico
-
+/*
 de estos se mantiene un historial de lo que han hecho
-
-funcionalidad:
-cada cliente puede realizar varios pedidos, pero un pedido pertenece a un UNICO cliente
-
-Cada pedido contiene:
-Arreglos florales 
-Nro del pedido
-fecha
-costo total
-
-cuando se crea un arreglo florar, tendra ciertas flores segun el tipo de arreglo(ramo o centro de mesa) 
-y su tamaño
-
-Se debe saber de las flores: 
-nombre
-cantidad requerida
-precio unitario
-
-se necesita un software que:
-interfaz usuario
-
-se le piden los datos al usuario (se puede almacenar en una lista)
-
-datos individuales del usuario
-id nro
-nombre
-direccion
-gmail
 historial(lista?)
-
  */
+//segun el tipo de error que lance la consola, se le asigna como parametro
+//el "e" es el nombre de lo que recibe, en este caso seria los scanners.
+//el inputmismatchexception es tipo de exception arrojado por la consola 

@@ -1,11 +1,13 @@
 package com.mycompany.floristeria;
 
+import java.util.ArrayList;
 
 public class Cliente {
 //atributos
+
     private int idCliente;
     private String nombreUsuario, direccion, correo;
-     
+    private ArrayList<Recibo> recibosCliente;
 //contructor con parametros
     public Cliente(int idCliente, String nombreUsuario, String direccion, String correo) {
         this.idCliente = idCliente;

@@ -24,6 +24,7 @@ public class Floristeria {
         r1.addFlores(f1);
         r1.addFlores(f2);
         r1.addFlores(f3);
+
         r2.addFlores(f4);
         r2.addFlores(f5);
         r2.addFlores(f6);
@@ -37,6 +38,8 @@ public class Floristeria {
         boolean checker = false;
         boolean checkerbuy = true;
         int selection = 0;
+        int meanWhile = 0;
+//Son utilidades de java, solo son para colocar un formato de fecha al recibo
         LocalDate fechaActual = LocalDate.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String fechaFormateada = fechaActual.format(formato);
@@ -50,7 +53,6 @@ public class Floristeria {
             try {
                 checker = false;
                 System.out.println("Numero de identificacion");
-
                 c1.setIdCliente(teclado.nextInt());
             } catch (Exception e) {
                 System.out.println("Introduzca el valor pedido");
@@ -59,19 +61,17 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
+
 //Nombre del usuario
         do {
             try {
                 checker = false;
                 System.out.println("Ingrese su nombre");
                 String nombre = teclado.next();
-
                 if (nombre.matches(".*\\d.*")) {
                     throw new IllegalArgumentException("Ingresar un nombre real");
                 }
-
                 c1.setNombreUsuario(nombre);
-
             } catch (IllegalArgumentException e) {
                 System.out.println("Error:" + e.getMessage());
                 checker = true;
@@ -101,7 +101,6 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
-
 //Compras
         System.out.println("Bienvenido, " + c1.getNombreUsuario());
         do {
@@ -115,6 +114,14 @@ public class Floristeria {
                     selection = teclado.nextInt();
                     if (selection > 0 && selection <= arreglos.size()) {
                         System.out.println("Has ingresado el arreglo: " + arreglos.get(selection - 1).getNombreArreglo());
+
+                        Recibo reciboGen = new Recibo();
+                        reciboGen.setFecha(fechaFormateada);
+                        reciboGen.modifyIdRecibo();
+//La adicion del nro de recibo no esta funcionando de momento:
+                        reciboGen.setNroRecibo(meanWhile+= 1);
+//NOTA: YA FUNCIONA PERO CON la variable meanwhile, toca incorporarla de forma mas metodica                         
+                        c1.agregarRecibos(reciboGen);
                     } else {
                         checker = true;
                         System.out.println("El valor introducido no corresponde a ningun arreglo");
@@ -127,9 +134,7 @@ public class Floristeria {
                 }
             } while (checker);
 //volver a comprar            
-
             System.out.println("Desea comprar algun otro producto?");
-
             do {
                 try {
                     System.out.println("Seleccionar");
@@ -144,6 +149,8 @@ public class Floristeria {
                         case 'n':
                             checkerbuy = false;
                             checker = false;
+                            System.out.println("Sus pedidos fueron: ");
+                            c1.mostrarRecibos();
                             break;
                     }
                 } catch (Exception e) {
@@ -152,14 +159,10 @@ public class Floristeria {
                     System.out.println("Decida si va a seguir comprando");
                 }
             } while (checkerbuy);
-
         } while (checker);
-//Proceso para hacer la factura  
-
     }
 
     public static void mostrarArreglos(ArrayList<Arreglo> arreglos) {
-
         for (int i = 0; i < arreglos.size(); i++) {
             System.out.println("Arreglos disponibles: " + arreglos.get(i).getNombreArreglo());
             System.out.println("Arreglo Nro:    " + (i + 1));
@@ -172,15 +175,3 @@ public class Floristeria {
         }
     }
 }
-
-//Pendiente:
-//implementacion del historial
-//volver a pedir el producto 
-
-/*
-de estos se mantiene un historial de lo que han hecho
-historial(lista?)
- */
-//segun el tipo de error que lance la consola, se le asigna como parametro
-//el "e" es el nombre de lo que recibe, en este caso seria los scanners.
-//el inputmismatchexception es tipo de exception arrojado por la consola 

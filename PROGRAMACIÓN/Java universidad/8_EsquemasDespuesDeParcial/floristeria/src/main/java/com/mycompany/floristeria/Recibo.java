@@ -1,6 +1,6 @@
 package com.mycompany.floristeria;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 public class Recibo {
 //Atributos
@@ -17,7 +17,7 @@ public class Recibo {
     }
 //Constructor sin parametros
 
-    private Recibo() {
+    public Recibo() {
         fecha = "";
         IdRecibo = 0;
         nroRecibo = 0;
@@ -45,6 +45,17 @@ public class Recibo {
 
     public void setNroRecibo(int nroRecibo) {
         this.nroRecibo = nroRecibo;
+    }
+
+    public int modifyIdRecibo() {
+        return IdRecibo = randomNumber(6);
+    }
+//Funcionalidad de java para crear un numero random de n cifras 
+    public int randomNumber(int n) {
+        Random random = new Random();
+        int min = (int) Math.pow(10, n - 1);  // Número mínimo con n cifras (por ejemplo, 100000 para 6 cifras)
+        int max = (int) Math.pow(10, n) - 1;  // Número máximo con n cifras (por ejemplo, 999999 para 6 cifras)
+        return random.nextInt(max - min + 1) + min;
     }
 
 }

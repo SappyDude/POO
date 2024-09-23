@@ -9,11 +9,13 @@ public class Cliente {
     private String nombreUsuario, direccion, correo;
     private ArrayList<Recibo> recibosCliente;
 //contructor con parametros
+
     public Cliente(int idCliente, String nombreUsuario, String direccion, String correo) {
         this.idCliente = idCliente;
         this.nombreUsuario = nombreUsuario;
         this.direccion = direccion;
         this.correo = correo;
+        this.recibosCliente = new ArrayList<Recibo>();
     }
 
 //constructor vacio
@@ -22,6 +24,7 @@ public class Cliente {
         nombreUsuario = "";
         direccion = "";
         correo = "";
+        recibosCliente = new ArrayList<Recibo>();
     }
 
     public int getIdCliente() {
@@ -55,4 +58,27 @@ public class Cliente {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public ArrayList<Recibo> getRecibos() {
+        return recibosCliente;
+    }
+
+    public void agregarRecibos(Recibo recibos) {
+        recibosCliente.add(recibos);
+    }
+
+    public void mostrarRecibos() {
+        for (int i = 0; i < recibosCliente.size(); i++) {
+            System.out.println("Numero de su recibo: " + recibosCliente.get(i).getNroRecibo());
+            System.out.println("Fecha de su recibo:  " + recibosCliente.get(i).getFecha());
+            System.out.println("Id de su recibo:     " + recibosCliente.get(i).getIdRecibo());
+            System.out.println("                     ");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente {" + "recibosCliente= " + recibosCliente + '}';
+    }
+
 }

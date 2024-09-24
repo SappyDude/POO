@@ -17,6 +17,7 @@ public class Floristeria {
         Flor f4 = new Flor(3000, "girasol");
         Flor f5 = new Flor(3500, "lirio");
         Flor f6 = new Flor(4000, "flor de loto");
+        
         Arreglo r1 = new Arreglo("Maceta moldeada a mano", "Arreglo artesanal");
         Arreglo r2 = new Arreglo("Maceta prefrabricada", "Arreglo prefabricado");
 
@@ -119,8 +120,6 @@ public class Floristeria {
                         reciboGen.setFecha(fechaFormateada);
                         reciboGen.modifyIdRecibo();
                         reciboGen.setNroRecibo(meanWhile += 1);
-                        //Falta acomodarlo en los recibos del cliente 
-//NOTA: YA FUNCIONA PERO CON la variable meanwhile, toca incorporarla de forma mas metodica  
                         c1.agregarRecibos(reciboGen);
                     } else {
                         checker = true;

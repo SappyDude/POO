@@ -54,6 +54,7 @@ public class Floristeria {
                 checker = false;
                 System.out.println("Numero de identificacion");
                 c1.setIdCliente(teclado.nextInt());
+                teclado.nextLine();
             } catch (Exception e) {
                 System.out.println("Introduzca el valor pedido");
                 System.out.println("");
@@ -67,7 +68,7 @@ public class Floristeria {
             try {
                 checker = false;
                 System.out.println("Ingrese su nombre");
-                String nombre = teclado.next();
+                String nombre = teclado.nextLine();
                 if (nombre.matches(".*\\d.*")) {
                     throw new IllegalArgumentException("Ingresar un nombre real");
                 }
@@ -82,10 +83,9 @@ public class Floristeria {
             try {
                 checker = false;
                 System.out.println("Ingrese su direccion");
-                c1.setDireccion(teclado.next());
+                c1.setDireccion(teclado.nextLine());
             } catch (Exception e) {
                 System.out.println("Introduzca el valor pedido");
-                teclado.next();
                 checker = true;
             }
         } while (checker);
@@ -94,10 +94,9 @@ public class Floristeria {
             try {
                 checker = false;
                 System.out.println("Ingrese su correo");
-                c1.setCorreo(teclado.next());
+                c1.setCorreo(teclado.nextLine());
             } catch (Exception e) {
                 System.out.println("Introduzca el valor pedido");
-                teclado.next();
                 checker = true;
             }
         } while (checker);
@@ -114,13 +113,14 @@ public class Floristeria {
                     selection = teclado.nextInt();
                     if (selection > 0 && selection <= arreglos.size()) {
                         System.out.println("Has ingresado el arreglo: " + arreglos.get(selection - 1).getNombreArreglo());
-
+                        
+//Aqui se genera el recibo
                         Recibo reciboGen = new Recibo();
                         reciboGen.setFecha(fechaFormateada);
                         reciboGen.modifyIdRecibo();
-//La adicion del nro de recibo no esta funcionando de momento:
-                        reciboGen.setNroRecibo(meanWhile+= 1);
-//NOTA: YA FUNCIONA PERO CON la variable meanwhile, toca incorporarla de forma mas metodica                         
+                        reciboGen.setNroRecibo(meanWhile += 1);
+                        //Falta acomodarlo en los recibos del cliente 
+//NOTA: YA FUNCIONA PERO CON la variable meanwhile, toca incorporarla de forma mas metodica  
                         c1.agregarRecibos(reciboGen);
                     } else {
                         checker = true;
@@ -150,7 +150,6 @@ public class Floristeria {
                             checkerbuy = false;
                             checker = false;
                             System.out.println("Sus pedidos fueron: ");
-                            c1.mostrarRecibos();
                             break;
                     }
                 } catch (Exception e) {
@@ -160,6 +159,7 @@ public class Floristeria {
                 }
             } while (checkerbuy);
         } while (checker);
+        c1.mostrarRecibos(arreglos);
     }
 
     public static void mostrarArreglos(ArrayList<Arreglo> arreglos) {

@@ -1,13 +1,14 @@
 package com.mycompany.floristeria;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Recibo {
 //Atributos
-
     private String fecha;
     private int IdRecibo;
     private int nroRecibo;
+
 //Constructor parametrizado
 
     public Recibo(String fecha, int IdRecibo, int nroRecibo) {
@@ -46,7 +47,7 @@ public class Recibo {
     public void setNroRecibo(int nroRecibo) {
         this.nroRecibo = nroRecibo;
     }
-
+    
     public int modifyIdRecibo() {
         return IdRecibo = randomNumber(6);
     }

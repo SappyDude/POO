@@ -67,18 +67,18 @@ public class Cliente {
         recibosCliente.add(recibos);
     }
 
-    public void mostrarRecibos() {
+    public void mostrarRecibos(ArrayList<Arreglo> arreglos) {
         for (int i = 0; i < recibosCliente.size(); i++) {
-            System.out.println("Numero de su recibo: " + recibosCliente.get(i).getNroRecibo());
-            System.out.println("Fecha de su recibo:  " + recibosCliente.get(i).getFecha());
-            System.out.println("Id de su recibo:     " + recibosCliente.get(i).getIdRecibo());
-            System.out.println("                     ");
-        }
-    }
 
-    @Override
-    public String toString() {
-        return "Cliente {" + "recibosCliente= " + recibosCliente + '}';
+            System.out.println("Numero de su recibo:   " + recibosCliente.get(i).getNroRecibo());
+            System.out.println("Fecha de su recibo:    " + recibosCliente.get(i).getFecha());
+            System.out.println("Id de su recibo:       " + recibosCliente.get(i).getIdRecibo());
+            System.out.println("Nombre del usuario:    " + nombreUsuario);
+            System.out.println("Id del usuario:        " + idCliente);
+            System.out.println("Direccion del usuario: " + direccion);
+            System.out.println("Correo del usuario:    " + correo);
+            System.out.println("                       ");
+        }
     }
 
 }

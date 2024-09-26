@@ -40,10 +40,6 @@ public class Arreglo {
     }
 
 //gets and sets utilizados con add para listas
-    public ArrayList<Flor> availableFlores() {
-        return flores;
-    }
-
     public void addFlores(Flor flores1) {
         flores.add(flores1);
     }

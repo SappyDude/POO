@@ -2,8 +2,6 @@ package com.mycompany.floristeria;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Floristeria {
 
@@ -17,7 +15,7 @@ public class Floristeria {
         Flor f4 = new Flor(3000, "girasol");
         Flor f5 = new Flor(3500, "lirio");
         Flor f6 = new Flor(4000, "flor de loto");
-        
+
         Arreglo r1 = new Arreglo("Maceta moldeada a mano", "Arreglo artesanal");
         Arreglo r2 = new Arreglo("Maceta prefrabricada", "Arreglo prefabricado");
 
@@ -25,7 +23,7 @@ public class Floristeria {
         r1.addFlores(f1);
         r1.addFlores(f2);
         r1.addFlores(f3);
-
+//Arreglo 2
         r2.addFlores(f4);
         r2.addFlores(f5);
         r2.addFlores(f6);
@@ -39,12 +37,7 @@ public class Floristeria {
         boolean checker = false;
         boolean checkerbuy = true;
         int selection = 0;
-        int meanWhile = 0;
-//Son utilidades de java, solo son para colocar un formato de fecha al recibo
-        LocalDate fechaActual = LocalDate.now();
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String fechaFormateada = fechaActual.format(formato);
-
+        int counter = 0;
 //Datos del usuario
 //Id
         System.out.println("Bienvenido a la floristeria 'El palacio de las flores'");
@@ -79,6 +72,7 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
+
 //direccion
         do {
             try {
@@ -90,6 +84,7 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
+
 //correo
         do {
             try {
@@ -101,6 +96,7 @@ public class Floristeria {
                 checker = true;
             }
         } while (checker);
+
 //Compras
         System.out.println("Bienvenido, " + c1.getNombreUsuario());
         do {
@@ -114,12 +110,13 @@ public class Floristeria {
                     selection = teclado.nextInt();
                     if (selection > 0 && selection <= arreglos.size()) {
                         System.out.println("Has ingresado el arreglo: " + arreglos.get(selection - 1).getNombreArreglo());
-                        
+
 //Aqui se genera el recibo
                         Recibo reciboGen = new Recibo();
-                        reciboGen.setFecha(fechaFormateada);
+                        String fecha = reciboGen.fechaActual();
+                        reciboGen.setFecha(fecha);
                         reciboGen.modifyIdRecibo();
-                        reciboGen.setNroRecibo(meanWhile += 1);
+                        reciboGen.setNroRecibo(counter += 1);
                         c1.agregarRecibos(reciboGen);
                     } else {
                         checker = true;
@@ -132,6 +129,7 @@ public class Floristeria {
                     checker = true;
                 }
             } while (checker);
+
 //volver a comprar            
             System.out.println("Desea comprar algun otro producto?");
             do {
@@ -144,21 +142,21 @@ public class Floristeria {
                         case 's':
                             checkerbuy = false;
                             checker = true;
+                            teclado.nextLine();
                             break;
                         case 'n':
                             checkerbuy = false;
                             checker = false;
                             System.out.println("Sus pedidos fueron: ");
+                            c1.mostrarRecibos(arreglos);
                             break;
                     }
                 } catch (Exception e) {
                     checkerbuy = true;
-                    teclado.next();
                     System.out.println("Decida si va a seguir comprando");
                 }
             } while (checkerbuy);
         } while (checker);
-        c1.mostrarRecibos(arreglos);
     }
 
     public static void mostrarArreglos(ArrayList<Arreglo> arreglos) {

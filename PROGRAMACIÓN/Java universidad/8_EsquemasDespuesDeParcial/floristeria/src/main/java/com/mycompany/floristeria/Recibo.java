@@ -1,27 +1,29 @@
 package com.mycompany.floristeria;
 
 import java.util.Random;
-import java.util.ArrayList;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Recibo {
 //Atributos
+
     private String fecha;
     private int IdRecibo;
     private int nroRecibo;
 
-//Constructor parametrizado
-
-    public Recibo(String fecha, int IdRecibo, int nroRecibo) {
-        this.fecha = fecha;
-        this.IdRecibo = IdRecibo;
-        this.nroRecibo = nroRecibo;
-    }
 //Constructor sin parametros
-
     public Recibo() {
         fecha = "";
         IdRecibo = 0;
         nroRecibo = 0;
+    }
+
+//Constructor parametrizado
+    public Recibo(String fecha, int IdRecibo, int nroRecibo) {
+        this.fecha = fecha;
+        this.IdRecibo = IdRecibo;
+        this.nroRecibo = nroRecibo;
     }
 
     public String getFecha() {
@@ -47,11 +49,12 @@ public class Recibo {
     public void setNroRecibo(int nroRecibo) {
         this.nroRecibo = nroRecibo;
     }
-    
+
     public int modifyIdRecibo() {
         return IdRecibo = randomNumber(6);
     }
 //Funcionalidad de java para crear un numero random de n cifras 
+
     public int randomNumber(int n) {
         Random random = new Random();
         int min = (int) Math.pow(10, n - 1);  // Número mínimo con n cifras (por ejemplo, 100000 para 6 cifras)
@@ -59,4 +62,10 @@ public class Recibo {
         return random.nextInt(max - min + 1) + min;
     }
 
+    public String fechaActual() {
+        LocalDate fechaActual = LocalDate.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String fechaFormateada = fechaActual.format(formato);
+        return fechaFormateada;
+    }
 }

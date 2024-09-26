@@ -10,14 +10,6 @@ public class Cliente {
     private ArrayList<Recibo> recibosCliente;
 //contructor con parametros
 
-    public Cliente(int idCliente, String nombreUsuario, String direccion, String correo) {
-        this.idCliente = idCliente;
-        this.nombreUsuario = nombreUsuario;
-        this.direccion = direccion;
-        this.correo = correo;
-        this.recibosCliente = new ArrayList<Recibo>();
-    }
-
 //constructor vacio
     public Cliente() {
         idCliente = 0;
@@ -25,6 +17,14 @@ public class Cliente {
         direccion = "";
         correo = "";
         recibosCliente = new ArrayList<Recibo>();
+    }
+
+    public Cliente(int idCliente, String nombreUsuario, String direccion, String correo) {
+        this.idCliente = idCliente;
+        this.nombreUsuario = nombreUsuario;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.recibosCliente = new ArrayList<Recibo>();
     }
 
     public int getIdCliente() {

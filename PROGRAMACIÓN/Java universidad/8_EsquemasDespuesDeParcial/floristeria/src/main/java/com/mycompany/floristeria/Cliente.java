@@ -7,8 +7,7 @@ public class Cliente {
 
     private int idCliente;
     private String nombreUsuario, direccion, correo;
-    private ArrayList<Recibo> recibosCliente;
-//contructor con parametros
+    private ArrayList<Pedido> pedidosCliente;
 
 //constructor vacio
     public Cliente() {
@@ -16,15 +15,16 @@ public class Cliente {
         nombreUsuario = "";
         direccion = "";
         correo = "";
-        recibosCliente = new ArrayList<Recibo>();
+        pedidosCliente = new ArrayList<Pedido>();
     }
+//contructor con parametros
 
     public Cliente(int idCliente, String nombreUsuario, String direccion, String correo) {
         this.idCliente = idCliente;
         this.nombreUsuario = nombreUsuario;
         this.direccion = direccion;
         this.correo = correo;
-        this.recibosCliente = new ArrayList<Recibo>();
+        this.pedidosCliente = new ArrayList<Pedido>();
     }
 
     public int getIdCliente() {
@@ -59,20 +59,20 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public ArrayList<Recibo> getRecibos() {
-        return recibosCliente;
+    public ArrayList<Pedido> getPedido() {
+        return pedidosCliente;
     }
 
-    public void agregarRecibos(Recibo recibos) {
-        recibosCliente.add(recibos);
+    public void agregarPedidos(Pedido pedidos) {
+        pedidosCliente.add(pedidos);
     }
 
-    public void mostrarRecibos(ArrayList<Arreglo> arreglos) {
-        for (int i = 0; i < recibosCliente.size(); i++) {
+    public void mostrarPedidos(ArrayList<Arreglo> arreglos) {
+        for (int i = 0; i < pedidosCliente.size(); i++) {
 
-            System.out.println("Numero de su recibo:   " + recibosCliente.get(i).getNroRecibo());
-            System.out.println("Fecha de su recibo:    " + recibosCliente.get(i).getFecha());
-            System.out.println("Id de su recibo:       " + recibosCliente.get(i).getIdRecibo());
+            System.out.println("Numero de su pedido:   " + pedidosCliente.get(i).getNroPedido());
+            System.out.println("Fecha de su pedido:    " + pedidosCliente.get(i).getFecha());
+            System.out.println("Id de su pedido:       " + pedidosCliente.get(i).getIdPedido());
             System.out.println("Nombre del usuario:    " + nombreUsuario);
             System.out.println("Id del usuario:        " + idCliente);
             System.out.println("Direccion del usuario: " + direccion);

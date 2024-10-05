@@ -3,16 +3,18 @@ package com.mycompany.floristeria;
 public class Flor {
 
     private int costo;
-    private String tipo;
+    private String tipo, color;
 
     public Flor() {
         costo = 0;
         tipo = "";
+        color = "";
     }
 
-    public Flor(int costo, String tipo) {
+    public Flor(int costo, String tipo, String color) {
         this.costo = costo;
         this.tipo = tipo;
+        this.color = color;
     }
 
     public int getCosto() {
@@ -31,4 +33,11 @@ public class Flor {
         this.tipo = tipo;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
 }

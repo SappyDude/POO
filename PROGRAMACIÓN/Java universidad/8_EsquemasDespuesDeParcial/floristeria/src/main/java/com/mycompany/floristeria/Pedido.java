@@ -1,29 +1,28 @@
 package com.mycompany.floristeria;
 
 import java.util.Random;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Recibo {
+public class Pedido {
 //Atributos
 
     private String fecha;
-    private int IdRecibo;
-    private int nroRecibo;
+    private int idPedido;
+    private int nroPedido;
 
 //Constructor sin parametros
-    public Recibo() {
+    public Pedido() {
         fecha = "";
-        IdRecibo = 0;
-        nroRecibo = 0;
+        idPedido = 0;
+        nroPedido = 0;
     }
 
 //Constructor parametrizado
-    public Recibo(String fecha, int IdRecibo, int nroRecibo) {
+    public Pedido(String fecha, int idPedido, int nroPedido) {
         this.fecha = fecha;
-        this.IdRecibo = IdRecibo;
-        this.nroRecibo = nroRecibo;
+        this.idPedido = idPedido;
+        this.nroPedido = nroPedido;
     }
 
     public String getFecha() {
@@ -34,24 +33,24 @@ public class Recibo {
         this.fecha = fecha;
     }
 
-    public int getIdRecibo() {
-        return IdRecibo;
+    public int getIdPedido() {
+        return idPedido;
     }
 
-    public void setIdRecibo(int IdRecibo) {
-        this.IdRecibo = IdRecibo;
+    public void setIdPedido(int idPedido) {
+        this.idPedido = idPedido;
     }
 
-    public int getNroRecibo() {
-        return nroRecibo;
+    public int getNroPedido() {
+        return nroPedido;
     }
 
-    public void setNroRecibo(int nroRecibo) {
-        this.nroRecibo = nroRecibo;
+    public void setNroPedido(int nroPedido) {
+        this.nroPedido = nroPedido;
     }
 
-    public int modifyIdRecibo() {
-        return IdRecibo = randomNumber(6);
+    public int modifyIdPedido() {
+        return idPedido = randomNumber(6);
     }
 //Funcionalidad de java para crear un numero random de n cifras 
 
@@ -61,6 +60,7 @@ public class Recibo {
         int max = (int) Math.pow(10, n) - 1;  // Número máximo con n cifras (por ejemplo, 999999 para 6 cifras)
         return random.nextInt(max - min + 1) + min;
     }
+//Funcionalidad para establecer una fecha en el pedido del cliente
 
     public String fechaActual() {
         LocalDate fechaActual = LocalDate.now();

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Arreglo {
 //Atributos
 
-    private ArrayList<Flor> flores;
     private String maceta, nombreArreglo;
+    private ArrayList<Flor> flores;
 
 //Constructor vacio
     public Arreglo() {
@@ -47,15 +47,15 @@ public class Arreglo {
 //metodos
     public void mostrarFlores() {
         for (int i = 0; i < flores.size(); i++) {
-            System.out.println(" - " + flores.get(i).getTipo());
+            System.out.println(" - " + flores.get(i).getTipo() + " (" + flores.get(i).getColor() + ")");
         }
     }
 
-    public void calcularPrecio() {
+    public int calcularPrecio() {
         int total = 0;
         for (int i = 0; i < flores.size(); i++) {
             total += flores.get(i).getCosto();
         }
-        System.out.println(total);
+        return total;
     }
 }

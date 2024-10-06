@@ -3,30 +3,31 @@ package com.mycompany.floristeria;
 import java.util.ArrayList;
 
 public class Cliente {
-//atributos
 
+//Atributos
     private int idCliente;
     private String nombreUsuario, direccion, correo;
     private ArrayList<Pedido> pedidosCliente;
 
-//constructor vacio
+//Constructor vacío
     public Cliente() {
         idCliente = 0;
         nombreUsuario = "";
         direccion = "";
         correo = "";
-        pedidosCliente = new ArrayList<Pedido>();
+        pedidosCliente = new ArrayList<>();
     }
-//contructor con parametros
 
+//Contructor parametrizado
     public Cliente(int idCliente, String nombreUsuario, String direccion, String correo) {
         this.idCliente = idCliente;
         this.nombreUsuario = nombreUsuario;
         this.direccion = direccion;
         this.correo = correo;
-        this.pedidosCliente = new ArrayList<Pedido>();
+        this.pedidosCliente = new ArrayList<>();
     }
 
+//Gets and sets de la clase
     public int getIdCliente() {
         return idCliente;
     }
@@ -59,26 +60,35 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public ArrayList<Pedido> getPedido() {
+    public ArrayList<Pedido> getPedidos() {
         return pedidosCliente;
     }
 
-    public void agregarPedidos(Pedido pedidos) {
-        pedidosCliente.add(pedidos);
+    public void agregarPedido(Pedido pedido) {
+        pedidosCliente.add(pedido);
     }
 
-    public void mostrarPedidos(ArrayList<Arreglo> arreglos) {
-        for (int i = 0; i < pedidosCliente.size(); i++) {
-
-            System.out.println("Numero de su pedido:   " + pedidosCliente.get(i).getNroPedido());
-            System.out.println("Fecha de su pedido:    " + pedidosCliente.get(i).getFecha());
-            System.out.println("Id de su pedido:       " + pedidosCliente.get(i).getIdPedido());
-            System.out.println("Nombre del usuario:    " + nombreUsuario);
-            System.out.println("Id del usuario:        " + idCliente);
-            System.out.println("Direccion del usuario: " + direccion);
-            System.out.println("Correo del usuario:    " + correo);
-            System.out.println("                       ");
+//Métodos
+    public void mostrarPedidos() {
+        System.out.println("Pedidos de: " + nombreUsuario);
+        //Esta es la implementacion del for each(funciona parecido a un for, pero controla mejor la cantidad de iteraciones)
+        for (Pedido pedido : pedidosCliente) {
+            System.out.println(" - Pedido #" + pedido.getIdPedido() + " - Fecha: " + pedido.getFecha());
+            pedido.getArreglo().mostrarFlores();
+            System.out.println("   Total: " + pedido.getArreglo().calcularPrecio());
         }
     }
 
+// Método para calcular total gastado por el cliente
+    public double calcularTotalGastado() {
+        double total = 0;
+        for (Pedido pedido : pedidosCliente) {
+            total += pedido.getArreglo().calcularPrecio();
+        }
+        return total;
+    }
+
+    public boolean tieneMultiplesPedidos() {
+        return pedidosCliente.size() > 1;
+    }
 }

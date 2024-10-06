@@ -3,34 +3,24 @@ package com.mycompany.floristeria;
 import java.util.ArrayList;
 
 public class Arreglo {
-//Atributos
 
-    private String maceta, nombreArreglo;
+//Atributos
+    private String nombreArreglo;
     private ArrayList<Flor> flores;
 
-//Constructor vacio
+//Constructor vacío
     public Arreglo() {
-        maceta = "";
         nombreArreglo = "";
-        flores = new ArrayList<Flor>();
+        flores = new ArrayList<>();
     }
 
 //Constructor parametrizado 
-    public Arreglo(String maceta, String nombreArreglo) {
-        this.maceta = maceta;
+    public Arreglo(String nombreArreglo) {
         this.nombreArreglo = nombreArreglo;
-        this.flores = new ArrayList<Flor>();
+        this.flores = new ArrayList<>();
     }
 
-//gets and sets
-    public String getMaceta() {
-        return maceta;
-    }
-
-    public void setMaceta(String maceta) {
-        this.maceta = maceta;
-    }
-
+//Gets and sets de la clase
     public String getNombreArreglo() {
         return nombreArreglo;
     }
@@ -39,12 +29,11 @@ public class Arreglo {
         this.nombreArreglo = nombreArreglo;
     }
 
-//gets and sets utilizados con add para listas
-    public void addFlores(Flor flores1) {
-        flores.add(flores1);
+    public void agregarFlor(Flor flor) {
+        flores.add(flor);
     }
 
-//metodos
+//Métodos
     public void mostrarFlores() {
         for (int i = 0; i < flores.size(); i++) {
             System.out.println(" - " + flores.get(i).getTipo() + " (" + flores.get(i).getColor() + ")");

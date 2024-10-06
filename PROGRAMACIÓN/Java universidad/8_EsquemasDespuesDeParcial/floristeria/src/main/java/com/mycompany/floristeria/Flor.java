@@ -2,26 +2,30 @@ package com.mycompany.floristeria;
 
 public class Flor {
 
-    private int costo;
+//Atributos de la clase
+    private double costo;
     private String tipo, color;
 
+//Constructor vacío
     public Flor() {
-        costo = 0;
+        costo = 0.0;
         tipo = "";
         color = "";
     }
 
-    public Flor(int costo, String tipo, String color) {
+//Constructor parametrizado
+    public Flor(double costo, String tipo, String color) {
         this.costo = costo;
         this.tipo = tipo;
         this.color = color;
     }
 
-    public int getCosto() {
+//gets and sets de la clase
+    public double getCosto() {
         return costo;
     }
 
-    public void setCosto(int costo) {
+    public void setCosto(double costo) {
         this.costo = costo;
     }
 

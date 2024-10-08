@@ -255,7 +255,6 @@ public class Floristeria {
     }
 
 }
-
 //pregunta 1: el costo total se puede calcular con el metodo calcularPrecio de la clase Arreglo
 //pregunta 2: el historial de compras del cliente se obtiene con el método mostrarPedidos en la clase Cliente
 //pregunta 3: en el menu de compra, usamos el metodo agregarFlor en la clase Arreglo para añadir una flor

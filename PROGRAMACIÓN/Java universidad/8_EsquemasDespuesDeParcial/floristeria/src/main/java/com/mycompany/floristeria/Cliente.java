@@ -80,8 +80,8 @@ public class Cliente {
     }
 
 // Método para calcular total gastado por el cliente
-    public double calcularTotalGastado() {
-        double total = 0;
+    public float calcularTotalGastado() {
+        float total = 0;
         for (Pedido pedido : pedidosCliente) {
             total += pedido.getArreglo().calcularPrecio();
         }

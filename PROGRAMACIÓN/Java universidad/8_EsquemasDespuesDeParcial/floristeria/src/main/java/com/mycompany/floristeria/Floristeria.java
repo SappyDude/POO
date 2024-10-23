@@ -246,7 +246,6 @@ public class Floristeria {
                 }
             }
         }
-
         // Mostrar la lista de clientes ordenada por el total gastado
         System.out.println("Lista de clientes ordenada por el total gastado:");
         for (Cliente cliente : clientes) {

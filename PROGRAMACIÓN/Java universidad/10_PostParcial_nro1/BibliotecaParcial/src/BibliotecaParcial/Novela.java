@@ -1,5 +1,9 @@
 package BibliotecaParcial;
 
+/*
+Esta clasa es una extensión de la clase padre "Libro", y tiene atributos propios como: Género y Resumen 
+ */
+
 public class Novela extends Libro {
 
 //Atributos
@@ -7,8 +11,8 @@ public class Novela extends Libro {
     private String resumen;
 
 //Constructor parametrizado
-    public Novela(String genero, String resumen, String titulo, String autor, int numPaginas) {
-        super(titulo, autor, numPaginas);
+    public Novela(String genero, String resumen, String titulo, String autor, int numPaginas, int cantidadCopias) {
+        super(titulo, autor, numPaginas, cantidadCopias);
         this.genero = genero;
         this.resumen = resumen;
     }
@@ -75,5 +79,4 @@ public class Novela extends Libro {
         System.out.println("  Genero: " + genero);
         System.out.println("  Resumen: " + resumen);
     }
-
 }

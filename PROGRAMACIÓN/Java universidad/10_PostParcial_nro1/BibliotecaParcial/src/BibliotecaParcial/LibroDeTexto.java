@@ -1,5 +1,9 @@
 package BibliotecaParcial;
 
+/*
+Esta clase es una extensión de la clase padre "Libro", y tiene atributos propios como: Tema principal y ejercicio.
+ */
+
 public class LibroDeTexto extends Libro {
 
 //Atributos
@@ -7,19 +11,19 @@ public class LibroDeTexto extends Libro {
     private String ejercicio;
 
 //Constructor parametrizado
-    public LibroDeTexto(String temaPrincipal, String ejercicio, String titulo, String autor, int numPaginas) {
-        super(titulo, autor, numPaginas);
+    public LibroDeTexto(String temaPrincipal, String ejercicio, String titulo, String autor, int numPaginas, int cantidadCopias) {
+        super(titulo, autor, numPaginas, cantidadCopias);
         this.temaPrincipal = temaPrincipal;
         this.ejercicio = ejercicio;
     }
-    
+
 //Constructor vacio
     public LibroDeTexto() {
         super();
         temaPrincipal = "";
         ejercicio = "";
     }
-    
+
 //Gets and Sets
     public String getTemaPrincipal() {
         return temaPrincipal;
@@ -36,7 +40,7 @@ public class LibroDeTexto extends Libro {
     public void setEjercicio(String ejercicio) {
         this.ejercicio = ejercicio;
     }
-    
+
 //Gets and Sets con Override
     @Override
     public String getTitulo() {
@@ -75,6 +79,5 @@ public class LibroDeTexto extends Libro {
         System.out.println("  Teme principal: " + temaPrincipal);
         System.out.println("  Ejercicio: " + ejercicio);
     }
-    
-    
+
 }

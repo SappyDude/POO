@@ -1,13 +1,17 @@
 package BibliotecaParcial;
 
+/*
+Esta clase es una extensión de la clase padre "Libro", y tiene atributos propios como: área de conocimiento
+ */
+
 public class LibroDeReferencia extends Libro {
 
 //Atributos
     private String areaConocimiento;
 
 //Constructor parametrizado
-    public LibroDeReferencia(String titulo, String autor, int numeroPaginas, String areaConocimiento) {
-        super(titulo, autor, numeroPaginas);
+    public LibroDeReferencia(String areaConocimiento, String titulo, String autor, int numPaginas, int cantidadCopias) {
+        super(titulo, autor, numPaginas, cantidadCopias);
         this.areaConocimiento = areaConocimiento;
     }
 

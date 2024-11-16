@@ -1,7 +1,8 @@
-com\mycompany\zoologico\Mamifero.class
-com\mycompany\zoologico\Ave.class
-com\mycompany\zoologico\ZoologicoMain.class
-com\mycompany\zoologico\Animal.class
-com\mycompany\zoologico\Zona.class
-com\mycompany\zoologico\Visitante.class
-com\mycompany\zoologico\Zoologico.class
+Main.class
+Modelo\Visitante.class
+Modelo\Zona.class
+Modelo\Zoologico.class
+Modelo\Mamifero.class
+Vista\VistaZoologico.class
+Modelo\Animal.class
+Modelo\Ave.class

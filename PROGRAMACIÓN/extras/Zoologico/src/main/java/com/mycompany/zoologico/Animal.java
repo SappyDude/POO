@@ -1,4 +1,4 @@
-package Modelo;
+package com.mycompany.zoologico;
 
 /**
  * @author SappyDude
@@ -83,9 +83,5 @@ public abstract class Animal {
     }
 
     public abstract void comer();
-    public abstract void acariciar();
-    public abstract void abrazar();
-    public abstract void darDecomer();
-    
 
 }

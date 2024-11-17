@@ -1,71 +1,62 @@
 package Modelo;
+//Importaciones de otras clases
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
-/**
- * @author SappyDude
- */
 public class Zoologico {
 
-    private String nombre;
+//Atributos de la clase
+    private String nombre = "ZooNiverse";
     private ArrayList<Zona> zonas;
     private ArrayList<Visitante> visitantesTotales;
+    private String contraseña;
 
-    public void rastrearVisitante(String nombreVisitante) {
-
+//Constructor sin parámetros
+    public Zoologico() {
+        this.visitantesTotales = new ArrayList<>();
+        this.zonas = new ArrayList<>();
+        this.contraseña = "admin.123";
     }
 
-    public void agregarZona() {
-
+//Gets and sets de la clase
+    public String getNombre() {
+        return nombre;
     }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getContraseña() {
+        return contraseña;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
+    }
+
+    public ArrayList<Visitante> obtenerVisitantes() {
+        return visitantesTotales;
+    }
+
+//Métodos utilizados en esta clase
     public void agregarVisitante(Visitante visitante) {
+        if (visitantesTotales == null) {
+            visitantesTotales = new ArrayList<>(); // Inicializa la lista si no está inicializada
+        }
         visitantesTotales.add(visitante);
     }
 
-    public void registrarVisitante() {
-        boolean checker = true;
-        Scanner scanner = new Scanner(System.in);
-        Visitante visitante = new Visitante();
-        do {
-            try {
-                System.out.println("identificacion");
-                visitante.setIdentificacion(scanner.nextInt());
-                scanner.nextLine();
-                break;
-            } catch (Exception e) {
-                scanner.nextLine();// pendiente hacer la clase exception personalizada
-            }
-
-        } while (checker);
-
-        do {
-            try {
-                System.out.println("Ingresa tu nombre: ");
-                visitante.setNombre(scanner.nextLine());
-                break;
-            } catch (Exception e) {
-                scanner.nextLine();
-            }
-
-        } while (checker);
-        do {
-            try {
-                System.out.println("Ingresa tu edad: ");
-                visitante.setEdad(scanner.nextInt());
-                scanner.nextLine();
-                break;
-            } catch (Exception e) {
-                scanner.nextLine();
-            }
-
-        } while (checker);
-        System.out.println("Salio correctamente");
-        agregarVisitante(visitante);
-        System.out.println("agregado");
-        System.out.println(visitantesTotales);
-        System.out.println("no agregado");
+//    public void quitarVisitante(Visitante visitante) {
+//    }
+    public void agregarZona(Zona zona) {
+        zonas.add(zona);
     }
 
+    public void mostrarZonas() {
+        for (int i = 0; i < zonas.size(); i++) {
+            System.out.println(zonas.get(i).getNombre());
+            System.out.println(zonas.get(i).getHabitat());
+        }
+    }
 }

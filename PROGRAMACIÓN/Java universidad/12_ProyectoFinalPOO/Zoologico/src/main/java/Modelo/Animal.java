@@ -1,10 +1,9 @@
 package Modelo;
 
-/**
- * @author SappyDude
- */
 public abstract class Animal {
 
+    //Atributos de la clase
+    protected String nombre;
     protected String nombreCientifico;
     protected int edad;
     protected float peso;
@@ -12,10 +11,13 @@ public abstract class Animal {
     protected String habitatNatural;
     protected String dieta;
 
+    //Constructor de la clase  
     public Animal() {
     }
 
-    public Animal(String nombreCientifico, int edad, float peso, boolean esPeligroso, String habitatNatural, String dieta) {
+    //Constructor parametrizado de la clase
+    public Animal(String nombre, String nombreCientifico, int edad, float peso, boolean esPeligroso, String habitatNatural, String dieta) {
+        this.nombre = nombre;
         this.nombreCientifico = nombreCientifico;
         this.edad = edad;
         this.peso = peso;
@@ -24,6 +26,7 @@ public abstract class Animal {
         this.dieta = dieta;
     }
 
+    //Gets and Sets de la clase
     public String getNombreCientifico() {
         return nombreCientifico;
     }
@@ -72,6 +75,7 @@ public abstract class Animal {
         this.dieta = dieta;
     }
 
+    //Métodos de la clase
     public void mostrarDetalles() {
         System.out.println("Las caracteristicas del animal son:"
                 + "Nombre cientifico: " + nombreCientifico
@@ -82,10 +86,12 @@ public abstract class Animal {
         );
     }
 
+    //Métodos abstractos
     public abstract void comer();
-    public abstract void acariciar();
-    public abstract void abrazar();
-    public abstract void darDecomer();
-    
 
+    public abstract void acariciar();
+
+    public abstract void abrazar();
+
+    public abstract void darDecomer();
 }

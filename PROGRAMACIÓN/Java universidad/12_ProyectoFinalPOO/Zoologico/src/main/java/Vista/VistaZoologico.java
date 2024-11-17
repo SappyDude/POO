@@ -1,46 +1,59 @@
 package Vista;
-
+//Importaciones de otras clases
+import Modelo.Visitante;
 import Modelo.Zoologico;
 import java.util.Scanner;
+import Controlador.ZoologicoControlador;
 
-/**
- *
- * @author SappyDude
- */
+//El menu realizado para la vista del usuario, es parecido a inception
+//Donde se ingresa a zonas especificas dependiendo a lo que el usuario elija
 public class VistaZoologico {
+    //Creacion de objetos reutilizables durante esta clase
+    public static ZoologicoControlador zoologicoControlador = new ZoologicoControlador();
+    public static Scanner input = new Scanner(System.in);
+    public static int seleccion;
 
-    public void primeraPantallaPrograma() {
+    //Metodo encargado de mostrar la pantalla de inicio
+    public void PantallaPrograma(Zoologico zoologico) {
         boolean checkerPrincipal = true;
-        Scanner input = new Scanner(System.in);
-        Zoologico zoologico = new Zoologico();
-        int seleccion;
-        
+
         while (checkerPrincipal) {
             try {
-                System.out.println("Bienvenido al zoologico 'Zuniverse'!"
-                        + "\nPor favor, eliga una de las opciones de registro"
-                        + "\n1. Registrarse por primera vez"
-                        + "\n2. Iniciar sesion"
-                        + "\n3. Modo administrador"
-                        + "\n4. Salir");
+                System.out.println("""
+                                   Bienvenido al zoologico 'Zuniverse'!
+                                   Por favor, eliga una de las opciones de registro
+                                   1. Registrarse por primera vez
+                                   2. Iniciar sesion
+                                   3. Modo administrador
+                                   4. Salir""");
                 seleccion = input.nextInt();
 
                 switch (seleccion) {
+                    //REGISTRAR
                     case 1:
                         System.out.println("Registro como nuevo visitante");
-                        zoologico.registrarVisitante();
-                        checkerPrincipal = false;
-                        
-                        break;
+                        Visitante visitante = zoologicoControlador.registrarVisitante();
+                        zoologico.agregarVisitante(visitante);
+                        visitante.setVisitasHechas();
 
+                        checkerPrincipal = false;
+
+                        break;
+                    //INICIAR SESION
                     case 2:
-                        System.out.println("Inicio de sesion");
+                        System.out.println("Ingrese su id para iniciar sesion");
+                        Visitante visitanteInicioSesion = zoologicoControlador.iniciarSesion(input.nextInt(), zoologico);// Aqui ya es requerimiento el uso de 
+                        // La base de datos para los distintos usuarios
+                        visitanteInicioSesion.setVisitasHechas();
+                        System.out.println("Bienvenido " + visitanteInicioSesion.getNombre());
                         checkerPrincipal = false;
                         break;
-
+                    //MODO ADMINISTRADOR
                     case 3:
                         System.out.println("modo admin");
-                        checkerPrincipal = false;
+                        System.out.println("Ingrese la contraseña del administrador");
+
+                        checkerPrincipal = zoologicoControlador.iniciarSesionAdmin(zoologico);
                         break;
 
                     case 4:
@@ -59,5 +72,41 @@ public class VistaZoologico {
         }
     }
 
+    public boolean PantallaAdministrador() {
+
+        System.out.println("iniciaste la sesion de administrador");
+        System.out.println("""
+                        1. RastrearVisitante
+                        2. AgregarZona
+                        3. AgregarAnimal
+                        4. Salir
+                           """
+        );
+        seleccion = input.nextInt();
+        switch (seleccion) {
+            case 1:
+                return false;
+
+            case 2:
+
+                return false;
+
+            case 3:
+
+                return false;
+
+            case 4:
+
+                return true;
+
+            default:
+                throw new AssertionError();
+        }
+    }
+
+    public void PantallaZonas() {
+        System.out.println("¿Que zona deseas visitar en el zoo");
+
+    }
 
 }

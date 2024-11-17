@@ -1,6 +1,8 @@
-
+//Importaciones de otras clases
+import Controlador.ZoologicoControlador;
+import Modelo.Visitante;
 import Modelo.Zona;
-import java.util.Scanner;
+import Modelo.Zoologico;
 import Vista.VistaZoologico;
 
 /*
@@ -15,14 +17,21 @@ import Vista.VistaZoologico;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
+        //Objeto encargado de guardar datos necesarios
+        Zoologico zoologico = new Zoologico();
+        //Objeto encargado de administrar funcionalidades del Zoologico
+        ZoologicoControlador zoologicoControlador = new ZoologicoControlador();
+        //Objeto encargado de mostrar la interfaz del usuario
         VistaZoologico vistaZoologico = new VistaZoologico();
-//Zonas del zoooo
-        Zona zonaSelva = new Zona("Selva", "Tropical y húmedo", 5);
-        Zona zonaArtico = new Zona("Ártico", "Clima frío", 3);
-        Zona zonaDesierto = new Zona("Desierto", "Árido y seco", 4);
 
-        vistaZoologico.primeraPantallaPrograma();
+        //Creación de las zonas
+        zoologicoControlador.inicializarZonas(zoologico);
+        //Creación de los animales
+        zoologicoControlador.inicializarAnimales();
+        //Creación de los visitantes ya registrados
+        zoologicoControlador.inicializarVisitantes(zoologico);
 
+        //Interfaz desplegada para el usuario
+        vistaZoologico.PantallaPrograma(zoologico);
     }
 }

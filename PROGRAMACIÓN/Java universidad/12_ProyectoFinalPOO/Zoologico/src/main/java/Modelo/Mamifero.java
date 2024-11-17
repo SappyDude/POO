@@ -1,30 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
-/**
- *
- * @author SappyDude
- */
+//Clase hija de ANIMAL
 public class Mamifero extends Animal {
 
+    //Atributos de la clase
     private boolean tienePelaje;
     private float temperaturaCorporal;
     private boolean esNocturno;
 
+    //Constructor vacío de la clase
     public Mamifero() {
     }
-
-    public Mamifero(boolean tienePelaje, float temperaturaCorporal, boolean esNocturno, String nombreCientifico, int edad, float peso, boolean esPeligroso, String habitatNatural, String dieta) {
-        super(nombreCientifico, edad, peso, esPeligroso, habitatNatural, dieta);
+    
+    //Constructor parametrizado de la clase
+    public Mamifero(boolean tienePelaje, float temperaturaCorporal, boolean esNocturno, String nombre, String nombreCientifico, int edad, float peso, boolean esPeligroso, String habitatNatural, String dieta) {
+        super(nombre, nombreCientifico, edad, peso, esPeligroso, habitatNatural, dieta);
         this.tienePelaje = tienePelaje;
         this.temperaturaCorporal = temperaturaCorporal;
         this.esNocturno = esNocturno;
     }
 
-    public boolean isTienePelaje() {
+    //Gets and Sets
+    public boolean tienePelaje() {
         return tienePelaje;
     }
 
@@ -48,6 +45,7 @@ public class Mamifero extends Animal {
         this.esNocturno = esNocturno;
     }
 
+    //Métodos polimórficos
     @Override
     public void comer() {
         System.out.println("");

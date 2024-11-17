@@ -1,26 +1,28 @@
 package Modelo;
-/**
- *
- * @author SappyDude
- */
-public class Ave extends Animal {
 
+//Clase hija de ANIMAl
+public class Ave extends Animal {
+    
+    //Atributos de la clase
     private boolean puedeVolar;
     private String colorPlumaje;
     private int longevidad;
     private String cuidadoEspecial;
 
+    //Constructor vacío de la clase
     public Ave() {
     }
 
-    public Ave(boolean puedeVolar, String colorPlumaje, int longevidad, String cuidadoEspecial, String nombreCientifico, int edad, float peso, boolean esPeligroso, String habitatNatural, String dieta) {
-        super(nombreCientifico, edad, peso, esPeligroso, habitatNatural, dieta);
+    //Constructor parametrizado de la clase
+    public Ave(boolean puedeVolar, String colorPlumaje, int longevidad, String cuidadoEspecial, String nombre, String nombreCientifico, int edad, float peso, boolean esPeligroso, String habitatNatural, String dieta) {
+        super(nombre ,nombreCientifico, edad, peso, esPeligroso, habitatNatural, dieta);
         this.puedeVolar = puedeVolar;
         this.colorPlumaje = colorPlumaje;
         this.longevidad = longevidad;
         this.cuidadoEspecial = cuidadoEspecial;
     }
 
+    //Gets and Sets
     public boolean isPuedeVolar() {
         return puedeVolar;
     }
@@ -53,6 +55,7 @@ public class Ave extends Animal {
         this.cuidadoEspecial = cuidadoEspecial;
     }
 
+    //Métodos polimórficos
     @Override
     public void mostrarDetalles(){
         System.out.println("hijo");

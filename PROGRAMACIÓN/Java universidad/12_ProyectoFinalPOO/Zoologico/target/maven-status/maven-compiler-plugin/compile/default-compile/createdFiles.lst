@@ -2,7 +2,10 @@ Main.class
 Modelo\Visitante.class
 Modelo\Zona.class
 Modelo\Zoologico.class
+Controlador\ZonaControlador.class
+Modelo\Reptil.class
 Modelo\Mamifero.class
+Controlador\ZoologicoControlador.class
 Vista\VistaZoologico.class
 Modelo\Animal.class
 Modelo\Ave.class

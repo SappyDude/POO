@@ -2,12 +2,9 @@ package Modelo;
 
 import java.util.LinkedList;
 
-/**
- *
- * @author SappyDude
- */
 public class Visitante {
 
+    //Atributos de la clase
     private int identificacion;
     private String nombre;
     private int edad;
@@ -15,6 +12,7 @@ public class Visitante {
     private String interaccion;
     private LinkedList<String> interacciones;
 
+    //Contructor vacío de la clase
     public Visitante() {
         this.identificacion = 0;
         this.nombre = "";
@@ -22,9 +20,10 @@ public class Visitante {
         this.visitasHechas = 0;
         this.interaccion = "";
         this.interacciones = new LinkedList<>();
-        
+
     }
 
+    //Constructor parametrizado de la clase
     public Visitante(int identificacion, String nombre, int edad) {
         this.identificacion = identificacion;
         this.nombre = nombre;
@@ -32,6 +31,7 @@ public class Visitante {
         this.interacciones = new LinkedList<>();
     }
 
+    //Gets and sets de la clase
     public int getIdentificacion() {
         return identificacion;
     }
@@ -71,11 +71,4 @@ public class Visitante {
     public void setInteraccion(String interaccion) {
         this.interaccion = interaccion;
     }
-
-    @Override
-    public String toString() {
-        return "Visitante{" + "identificacion=" + identificacion + ", nombre=" + nombre + ", edad=" + edad + ", visitasHechas=" + visitasHechas + ", interaccion=" + interaccion + ", interacciones=" + interacciones + '}';
-    }
-
-    
 }

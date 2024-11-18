@@ -20,7 +20,6 @@ public class Visitante {
         this.visitasHechas = 0;
         this.interaccion = "";
         this.interacciones = new LinkedList<>();
-
     }
 
     //Constructor parametrizado de la clase

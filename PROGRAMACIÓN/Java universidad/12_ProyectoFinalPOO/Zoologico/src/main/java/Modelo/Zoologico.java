@@ -39,7 +39,11 @@ public class Zoologico {
         return visitantesTotales;
     }
 
+    public ArrayList<Zona> obtenerZonas() {
+        return zonas;
+    }
 //Métodos utilizados en esta clase
+
     public void agregarVisitante(Visitante visitante) {
         if (visitantesTotales == null) {
             visitantesTotales = new ArrayList<>(); // Inicializa la lista si no está inicializada
@@ -47,16 +51,23 @@ public class Zoologico {
         visitantesTotales.add(visitante);
     }
 
-//    public void quitarVisitante(Visitante visitante) {
-//    }
     public void agregarZona(Zona zona) {
         zonas.add(zona);
     }
 
     public void mostrarZonas() {
         for (int i = 0; i < zonas.size(); i++) {
-            System.out.println(zonas.get(i).getNombre());
-            System.out.println(zonas.get(i).getHabitat());
+            System.out.println("1.Nombre: " + zonas.get(i).getNombre());
+            System.out.println("2.Habitat: " + zonas.get(i).getHabitat());
+            System.out.println("3.Cantidad de animales: " + zonas.get(i).getCantidadOcupada());
         }
     }
+//el .agregarAnimal
+    public void intentarAgregarAnimal(Animal animal) {
+        for (int i = 0; i < zonas.size(); i++) {
+            zonas.get(i).agregarAnimal(animal);
+        }
+    }
+//  public void quitarVisitante(Visitante visitante) {
+//  }
 }

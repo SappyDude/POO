@@ -22,6 +22,7 @@ public class Zona {
         this.habitat = habitat;
         this.cantidadTotal = cantidadTotal;
         this.cantidadOcupada = 0;
+        this.animales = new ArrayList<>();
     }
 
     //Gets and Sets de la clase
@@ -41,7 +42,16 @@ public class Zona {
         this.habitat = habitat;
     }
 
+    public int getCantidadOcupada() {
+        return cantidadOcupada;
+    }
+
+    public void setCantidadOcupada(int cantidadOcupada) {
+        this.cantidadOcupada = cantidadOcupada;
+    }
+
     //Métodos de la clase
+    
     public boolean agregarAnimal(Animal animal) {
         if (!animal.getHabitatNatural().equals(this.habitat)) {
             System.out.println("El hábitat del animal no coincide con el de la zona.");
@@ -54,6 +64,14 @@ public class Zona {
         animales.add(animal);
         System.out.println("Animal agregado exitosamente a la zona " + nombre);
         return true;
+    }
+    public void mostrarAnimales() {
+        for (int i = 0; i < animales.size(); i++) {
+            if (animales.get(i).getClass() == Mamifero.class) {
+                System.out.println("el mamifero se ha guardado");
+                animales.get(i).getNombreCientifico();
+            }
+        }
     }
 
 }

@@ -24,13 +24,18 @@ public class ZoologicoControlador {
 
     //Crear las zonas por defecto
     public void inicializarZonas(Zoologico zoologico) {
-        Zona zonaSelva = new Zona("Selva", "Tropical", 5);
-        Zona zonaArtico = new Zona("Ártico", "Clima frío", 3);
-        Zona zonaDesierto = new Zona("Desierto", "Árido y seco", 4);
+        // Instanciación de las zonas
+        Zona zonaSelva = new Zona("Selva", "Tropical y húmedo", 5);
+        Zona zonaArtico = new Zona("Ártico", "Clima frío", 4);
+        Zona zonaDesierto = new Zona("Desierto", "Árido y seco", 6);
+        Zona zonaSabana = new Zona("Sabana", "Caluroso y con vegetación baja", 5);
+        Zona zonaBosque = new Zona("Bosque", "Clima templado y vegetación densa", 7);
 
         //Agregar las zonas a la lista de ZONAS de la clase zoologico
-        zoologico.agregarZona(zonaSelva);
+        zoologico.agregarZona(zonaSabana);
+        zoologico.agregarZona(zonaBosque);
         zoologico.agregarZona(zonaArtico);
+        zoologico.agregarZona(zonaSelva);
         zoologico.agregarZona(zonaDesierto);
     }
 
@@ -81,43 +86,42 @@ public class ZoologicoControlador {
     }
 
     //Crear instancias de animales
-    public void inicializarAnimales() {
-        Mamifero mono = new Mamifero(true, 37.5f, false, "Mono Capuchino", "Cebus capucinus", 5, 3.2f, false, "Clima cálido y húmedo", "Omnívoro");
-        Mamifero jaguar = new Mamifero(true, 38.0f, true, "Jaguar", "Panthera onca", 7, 100.5f, true, "Clima cálido y húmedo", "Carnívoro");
+    public void inicializarAnimales(Zoologico zoologico) {
+        Mamifero mono = new Mamifero(true, 37.5f, true, "Mono araña", "Ateles geoffroyi", 12, 8.4f, false, "Tropical y húmedo", "Frutas y hojas");
+        Ave guacamaya = new Ave(true, "Rojo brillante", 50, "Alimentación supervisada", "Guacamaya roja", "Ara macao", 8, 1.2f, false, "Tropical y húmedo", "Frutas y semillas");
+        Reptil boa = new Reptil(false, "Escamas lisas", "Sangre fría", "Ovíparo", "Boa constrictora", "Boa constrictor", 6, 15.3f, false, "Tropical y húmedo", "Pequeños mamíferos");
+        Mamifero osoPolar = new Mamifero(true, 36.9f, false, "Oso polar", "Ursus maritimus", 9, 500f, true, "Clima frío", "Carnívoro");
+        Ave pinguino = new Ave(false, "Negro y blanco", 20, "Control de temperatura", "Pingüino emperador", "Aptenodytes forsteri", 4, 30f, false, "Clima frío", "Peces y crustáceos");
+        Reptil lagartoArtico = new Reptil(false, "Escamas gruesas", "Sangre fría", "Ovíparo", "Lagarto ártico", "Ficticius arcticus", 3, 0.8f, false, "Clima frío", "Insectos");
+        Mamifero zorro = new Mamifero(true, 39.0f, true, "Zorro del desierto", "Vulpes zerda", 5, 1.5f, false, "Árido y seco", "Insectos y pequeños mamíferos");
+        Ave buho = new Ave(true, "Marrón claro", 10, "Cuidados nocturnos", "Búho del desierto", "Bubo bubo", 7, 2.5f, false, "Árido y seco", "Pequeños roedores");
+        Reptil cobra = new Reptil(true, "Escamas lisas", "Sangre fría", "Ovíparo", "Cobra egipcia", "Naja haje", 4, 1.3f, true, "Árido y seco", "Pequeños mamíferos");
+        Mamifero leon = new Mamifero(true, 38.5f, true, "León africano", "Panthera leo", 8, 190f, true, "Caluroso y con vegetación baja", "Carnívoro");
+        Ave avestruz = new Ave(false, "Negro y blanco", 30, "Supervisión en verano", "Avestruz", "Struthio camelus", 6, 120f, false, "Caluroso y con vegetación baja", "Plantas y semillas");
+        Reptil cocodrilo = new Reptil(false, "Escamas rugosas", "Sangre fría", "Ovíparo", "Cocodrilo del Nilo", "Crocodylus niloticus", 12, 450f, true, "Caluroso y con vegetación baja", "Carnívoro");
+        Mamifero osoPardo = new Mamifero(true, 37.8f, true, "Oso pardo", "Ursus arctos", 10, 300f, true, "Clima templado y vegetación densa", "Omnívoro");
+        Ave buhoReal = new Ave(true, "Marrón y blanco", 15, "Cuidados nocturnos", "Búho real", "Bubo bubo", 8, 3.2f, false, "Clima templado y vegetación densa", "Roedores");
+        Reptil lagartoComun = new Reptil(false, "Escamas finas", "Sangre fría", "Ovíparo", "Lagarto común", "Lacerta agilis", 2, 0.2f, false, "Clima templado y vegetación densa", "Insectos");
 
-        Ave guacamaya = new Ave(true, "Azul y amarillo", 50, "Protección solar", "Guacamaya Azul", "Ara ararauna", 4, 1.3f, false, "Clima cálido y húmedo", "Frugívoro");
-        Ave tucan = new Ave(true, "Negro y amarillo", 20, "Cuidado de pico", "Tucán", "Ramphastos toco", 6, 0.7f, false, "Clima cálido y húmedo", "Frugívoro");
-
-        Reptil anaconda = new Reptil(false, "Escamas grandes", "Sangre fría", "Ovovivípara", "Anaconda", "Eunectes murinus", 8, 120.0f, true, "Clima cálido y húmedo", "Carnívoro");
-        Reptil iguanaVerde = new Reptil(false, "Escamas pequeñas", "Sangre fría", "Ovípara", "Iguana Verde", "Iguana iguana", 3, 6.0f, false, "Clima cálido y húmedo", "Herbívoro");
-
-        Mamifero camello = new Mamifero(true, 37.0f, false, "Camello", "Camelus bactrianus", 10, 650.0f, false, "Clima árido", "Herbívoro");
-        Mamifero fenec = new Mamifero(true, 37.5f, true, "Zorro del Desierto", "Vulpes zerda", 4, 1.5f, false, "Clima árido", "Carnívoro");
-
-        Ave buitre = new Ave(true, "Negro y marrón", 40, "Cuidado de alas", "Buitre del Desierto", "Gyps fulvus", 5, 6.0f, false, "Clima árido", "Carnívoro");
-        Ave codorniz = new Ave(false, "Marrón", 7, "Cuidado de huevos", "Codorniz del Desierto", "Callipepla gambelii", 3, 0.2f, false, "Clima árido", "Omnívoro");
-
-        Reptil cobraDelDesierto = new Reptil(true, "Escamas pequeñas", "Sangre fría", "Ovípara", "Cobra del Desierto", "Naja haje", 6, 5.5f, true, "Clima árido", "Carnívoro");
-        Reptil geco = new Reptil(false, "Escamas suaves", "Sangre fría", "Ovípara", "Geco Leopardo", "Eublepharis macularius", 2, 0.08f, false, "Clima árido", "Insectívoro");
-
-        Mamifero delfin = new Mamifero(false, 36.5f, false, "Delfín", "Delphinus delphis", 12, 120.0f, false, "Clima marino", "Piscívoro");
-        Mamifero loboMarino = new Mamifero(true, 36.0f, false, "Lobo Marino", "Otaria flavescens", 15, 200.0f, false, "Clima marino", "Piscívoro");
-
-        Ave albatros = new Ave(true, "Blanco y negro", 50, "Cuidado de plumas", "Albatros", "Diomedea exulans", 8, 10.0f, false, "Clima marino", "Piscívoro");
-        Ave pelicano = new Ave(true, "Blanco y marrón", 25, "Protección ocular", "Pelícano", "Pelecanus occidentalis", 10, 7.0f, false, "Clima marino", "Piscívoro");
-
-        Reptil tortugaMarina = new Reptil(false, "Escamas duras", "Sangre fría", "Ovípara", "Tortuga Marina", "Chelonia mydas", 20, 300.0f, false, "Clima marino", "Herbívoro");
-        Reptil iguanaMarina = new Reptil(false, "Escamas gruesas", "Sangre fría", "Ovípara", "Iguana Marina", "Amblyrhynchus cristatus", 5, 13.0f, false, "Clima marino", "Herbívoro");
-
-        Mamifero oso = new Mamifero(true, 37.5f, false, "Oso Pardo", "Ursus arctos", 10, 450.0f, true, "Clima templado", "Omnívoro");
-        Mamifero ciervo = new Mamifero(true, 37.0f, false, "Ciervo", "Cervus elaphus", 8, 120.0f, false, "Clima templado", "Herbívoro");
-
-        Ave aguila = new Ave(true, "Marrón y blanco", 30, "Cuidado de pico", "Águila Real", "Aquila chrysaetos", 7, 4.5f, false, "Clima templado", "Carnívoro");
-        Ave halcon = new Ave(true, "Gris y negro", 15, "Protección ocular", "Halcón Peregrino", "Falco peregrinus", 5, 1.2f, false, "Clima templado", "Carnívoro");
+        zoologico.intentarAgregarAnimal(mono);
+        zoologico.intentarAgregarAnimal(guacamaya);
+        zoologico.intentarAgregarAnimal(boa);
+        zoologico.intentarAgregarAnimal(osoPolar);
+        zoologico.intentarAgregarAnimal(pinguino);
+        zoologico.intentarAgregarAnimal(lagartoArtico);
+        zoologico.intentarAgregarAnimal(zorro);
+        zoologico.intentarAgregarAnimal(buho);
+        zoologico.intentarAgregarAnimal(cobra);
+        zoologico.intentarAgregarAnimal(leon);
+        zoologico.intentarAgregarAnimal(avestruz);
+        zoologico.intentarAgregarAnimal(cocodrilo);
+        zoologico.intentarAgregarAnimal(osoPardo);
+        zoologico.intentarAgregarAnimal(buhoReal);
+        zoologico.intentarAgregarAnimal(lagartoComun);
     }
 
-    public Visitante registrarVisitante() {
-
+    public Visitante registrarVisitante() throws Exception {
+        //Variable verificadora de ingreso a menús
         boolean checker = true;
         Visitante visitante = new Visitante();
         //Pide datos de id
@@ -130,6 +134,12 @@ public class ZoologicoControlador {
                 break;
             } catch (Exception e) {
                 scanner.nextLine();// pendiente hacer la clase exception personalizada
+                checker = rectificador();//Al 2.Salir, presenta "Ingresaste algo erroneo"
+                if (checker == true) {
+                } else {
+                    throw new Exception();
+                }
+
             }
         } while (checker);
 
@@ -143,7 +153,7 @@ public class ZoologicoControlador {
                 scanner.nextLine(); //pendiente para hacer la clase exception personalizada
             }
         } while (checker);
- 
+
         //Pide datos de edad
         do {
             try {
@@ -152,12 +162,19 @@ public class ZoologicoControlador {
                 scanner.nextLine();
                 break;
             } catch (Exception e) {
-                scanner.nextLine();
+                scanner.nextLine();// pendiente hacer la clase exception personalizada
+                checker = rectificador();//Al 2.Salir, presenta "Ingresaste algo erroneo"
+                if (checker == true) {
+                } else {
+                    throw new Exception();
+                }
             }
         } while (checker);
         return visitante;
     }
 
+    //Este método se encarga de verificar y agregar una visita de un usuario
+    //ya registrado en el sistema
     public Visitante iniciarSesion(int id, Zoologico zoologico) {
         Visitante visitanteTemporal = null;
         for (int i = 0; i < zoologico.obtenerVisitantes().size(); i++) {
@@ -169,42 +186,46 @@ public class ZoologicoControlador {
         return visitanteTemporal;
     }
 
+    //Lógica para la opcion 4 (MODO ADMINISTRADOR)
     public boolean iniciarSesionAdmin(Zoologico zoologico) {
         boolean iniciarSesionAdminChecker = true;
         String contraseñaInput;
+
+        //Verificar si la contraseña que se pone, es la correcta
         do {
             contraseñaInput = scanner.nextLine();
             if (contraseñaInput.equals(zoologico.getContraseña())) {
+                //Aqui se llama un objeto para hacer uso del metodo PantallaAdmin
                 VistaZoologico vistaZoologico = new VistaZoologico();
+
+                //Llamo al metodo para entrar a la pantalla del admin
                 vistaZoologico.PantallaAdministrador();
-                iniciarSesionAdminChecker = false;
+                return true;
             } else {
-                System.out.println("""
+
+                iniciarSesionAdminChecker = rectificador();
+                System.out.println("Vuelva a ingresar la contraseña");
+
+            }
+        } while (iniciarSesionAdminChecker);
+        return true;
+    }
+
+    public boolean rectificador() {
+        System.out.println("""
                                    vuelva a intentarlo
                                    1. Volver a intentar
                                    2. Salir""");
-                int seleccion = scanner.nextInt();
-                switch (seleccion) {
-                    case 1:
-                        iniciarSesionAdminChecker = true;
-                        scanner.nextLine();
-                        System.out.println("Vuelva a ingresar la contraseña");
-                        break;
-                    case 2:
-                        iniciarSesionAdminChecker = false;
-                        break;
-                    default:
-                        throw new AssertionError();
-                }
-            }
-        } while (iniciarSesionAdminChecker);
-    }
-    
-//    public void rastrearVisitante(String nombreVisitante) {
-//
-//    }
-//
-//    public void agregarZona() {
-//    }
+        int seleccion = scanner.nextInt();
 
+        if (seleccion == 2) {
+            scanner.nextLine();
+            return false;
+        } else {
+            scanner.nextLine();
+            return true;
+        }
+    }
+//    public void rastrearVisitante(String nombreVisitante) {}
+//    public void agregarZona() {}
 }

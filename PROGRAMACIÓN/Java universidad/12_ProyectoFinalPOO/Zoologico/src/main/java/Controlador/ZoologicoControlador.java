@@ -92,7 +92,7 @@ public class ZoologicoControlador {
         zoologico.getZonas().get(4).setVisitantesPorZona(visitante20);
 
         //
-            }
+    }
 
     //Crear instancias de animales
     public void inicializarAnimales(Zoologico zoologico) {
@@ -138,8 +138,10 @@ public class ZoologicoControlador {
         do {
             try {
                 System.out.println("identificacion");
-                visitante.setIdentificacion(scanner.nextInt());
+                //metodo para recorrer cada uno de los 
+                visitante.setIdentificacion(zoologico.recorrerIds(scanner.nextInt()));
                 scanner.nextLine();
+
                 break;
             } catch (Exception e) {
                 scanner.nextLine();// pendiente hacer la clase exception personalizada

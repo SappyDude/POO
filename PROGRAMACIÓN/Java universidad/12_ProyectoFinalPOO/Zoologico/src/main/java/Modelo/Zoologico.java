@@ -76,6 +76,15 @@ public class Zoologico {
             System.out.println(visitantesTotales.get(i).getNombre());
         }
     }
+    
+    public int recorrerIds(int id) throws Exception{
+        for (int i = 0; i < visitantesTotales.size(); i++) {
+            if (id == visitantesTotales.get(i).getIdentificacion()) {
+                throw new Exception("No se puede usar el mismo id que otra persona");
+            }
+        }
+        return id;
+    }
 //  public void quitarVisitante(Visitante visitante) {
 //  }
 }

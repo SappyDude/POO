@@ -14,6 +14,12 @@ public class Zona {
 
     //Constructor vacío de la clase
     public Zona() {
+        this.nombre = "";
+        this.habitat = "";
+        this.cantidadTotal = 0;
+        this.cantidadOcupada = 0;
+        this.animales = new ArrayList<>();
+        this.visitantesPorZona = new ArrayList<>();
     }
 
     //Constructor parametrizado de la clase 
@@ -22,7 +28,9 @@ public class Zona {
         this.habitat = habitat;
         this.cantidadTotal = cantidadTotal;
         this.cantidadOcupada = 0;
-        this.animales = new ArrayList<>();
+        this.animales = new ArrayList<Animal>();
+        this.visitantesPorZona = new ArrayList<Visitante>();
+
     }
 
     //Gets and Sets de la clase
@@ -46,25 +54,31 @@ public class Zona {
         return cantidadOcupada;
     }
 
-    public void setCantidadOcupada(int cantidadOcupada) {
-        this.cantidadOcupada = cantidadOcupada;
+    public void setCantidadOcupada() {
+        this.cantidadOcupada += 1;
     }
 
+    public ArrayList<Visitante> getVisitantesPorZona() {
+        return visitantesPorZona;
+    }
+
+    public void setVisitantesPorZona(Visitante visitante) {
+        visitantesPorZona.add(visitante);
+    }
     //Métodos de la clase
-    
+
     public boolean agregarAnimal(Animal animal) {
         if (!animal.getHabitatNatural().equals(this.habitat)) {
-            System.out.println("El hábitat del animal no coincide con el de la zona.");
             return false;
         }
         if (animales.size() >= cantidadTotal) {
-            System.out.println("La zona " + nombre + " ha alcanzado su capacidad máxima.");
             return false;
         }
         animales.add(animal);
-        System.out.println("Animal agregado exitosamente a la zona " + nombre);
+        setCantidadOcupada();
         return true;
     }
+
     public void mostrarAnimales() {
         for (int i = 0; i < animales.size(); i++) {
             if (animales.get(i).getClass() == Mamifero.class) {

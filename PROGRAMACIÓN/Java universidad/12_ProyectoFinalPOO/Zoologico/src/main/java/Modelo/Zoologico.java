@@ -35,11 +35,11 @@ public class Zoologico {
         this.contraseña = contraseña;
     }
 
-    public ArrayList<Visitante> obtenerVisitantes() {
+    public ArrayList<Visitante> getVisitantes() {
         return visitantesTotales;
     }
 
-    public ArrayList<Zona> obtenerZonas() {
+    public ArrayList<Zona> getZonas() {
         return zonas;
     }
 //Métodos utilizados en esta clase
@@ -57,15 +57,23 @@ public class Zoologico {
 
     public void mostrarZonas() {
         for (int i = 0; i < zonas.size(); i++) {
-            System.out.println("1.Nombre: " + zonas.get(i).getNombre());
-            System.out.println("2.Habitat: " + zonas.get(i).getHabitat());
-            System.out.println("3.Cantidad de animales: " + zonas.get(i).getCantidadOcupada());
+            System.out.println("");
+            System.out.println((i + 1) + ". Nombre: " + zonas.get(i).getNombre());
+            System.out.println("- Habitat: " + zonas.get(i).getHabitat());
+            System.out.println("- Cantidad de animales: " + zonas.get(i).getCantidadOcupada());
         }
     }
 //el .agregarAnimal
+
     public void intentarAgregarAnimal(Animal animal) {
         for (int i = 0; i < zonas.size(); i++) {
             zonas.get(i).agregarAnimal(animal);
+        }
+    }
+
+    public void imprimirVisitantes(){
+        for (int i = 0; i < visitantesTotales.size(); i++) {
+            System.out.println(visitantesTotales.get(i).getNombre());
         }
     }
 //  public void quitarVisitante(Visitante visitante) {

@@ -5,6 +5,7 @@ import Modelo.Visitante;
 import Modelo.Zoologico;
 import java.util.Scanner;
 import Controlador.ZoologicoControlador;
+import Modelo.Zona;
 
 //El menu realizado para la vista del usuario, es parecido a inception
 //Donde se ingresa a zonas especificas dependiendo a lo que el usuario elija
@@ -39,9 +40,12 @@ public class VistaZoologico {
                     //REGISTRAR
                     case 1:
                         System.out.println("Registro como nuevo visitante");
-                        Visitante visitante = zoologicoControlador.registrarVisitante();
+                        Visitante visitante = zoologicoControlador.registrarVisitante(zoologico);
                         zoologico.agregarVisitante(visitante);
                         visitante.setVisitasHechas();
+                        System.out.println("Bienvenido " + visitante.getNombre());
+
+                        seleccionZona(zoologico);
                         checkerPrincipal = false;
                         break;
 
@@ -52,13 +56,13 @@ public class VistaZoologico {
                         // La base de datos para los distintos usuarios
                         visitanteInicioSesion.setVisitasHechas();
                         System.out.println("Bienvenido " + visitanteInicioSesion.getNombre());
+                        seleccionZona(zoologico);
                         checkerPrincipal = false;
                         break;
 
                     //MODO ADMINISTRADOR
                     case 3:
-                        System.out.println("modo admin");
-                        System.out.println("Ingrese la contraseña del administrador");
+                        System.out.println("\nIngrese la contraseña del administrador: ");
                         checkerPrincipal = zoologicoControlador.iniciarSesionAdmin(zoologico);
                         break;
 
@@ -67,26 +71,28 @@ public class VistaZoologico {
                         System.out.println("Acabas de salir del zoologico");
                         checkerPrincipal = false;
                         break;
-
                     default:
                         scanner.nextLine();
-
                         throw new AssertionError();
                 }
 
             } catch (Exception e) {
-                System.out.println("Ingresaste algo erroneo");
-                checkerPrincipal = true;
                 scanner.nextLine();
+                System.out.println("Ingresaste algo erroneo");
+
+                checkerPrincipal = true;
+
             }
         }
     }
 
-    //Método designado para la opción 4(MODO ADMINISTRADOR)
-    public boolean PantallaAdministrador() {
+    //Método designado para la opción 3(MODO ADMINISTRADOR)
+    public boolean PantallaAdministrador(Zoologico zoologico) {
         //Menú de opciones del MODO ADMINISTRADOR
-        System.out.println("iniciaste la sesion de administrador");
-        System.out.println("""
+       
+        System.out.print("""
+                        Inicio de administrador correcta
+                        Seleccione que desea hacer:
                         1. RastrearVisitante
                         2. AgregarZona
                         3. AgregarAnimal
@@ -94,12 +100,16 @@ public class VistaZoologico {
                            """
         );
         seleccion = scanner.nextInt();
+        scanner.nextLine();
 
         //Opciones específicas del menú ADMINISTRADOR
         switch (seleccion) {
 
             //
             case 1:
+                System.out.println("¿Que visitante desea buscar?");
+
+                zoologicoControlador.rastrearVisitante(zoologico, scanner.nextLine());
 
                 return false;
             case 2:
@@ -111,20 +121,36 @@ public class VistaZoologico {
                 return false;
 
             case 4:
-
+                System.out.print("\n");
                 return true;
 
             default:
+                scanner.nextLine();
                 throw new AssertionError();
         }
     }
 
     //Método designado para la selección de la zona por parte del cliente
-    public void PantallaZonas(Zoologico zoologico) {
-        System.out.println("¿Que zona deseas visitar en el zoo");
-        //Pendiente la llamada a cada uno de los login y register de este metodo
-        //ONWORK la organizacion de zonas y animales
+    public void seleccionZona(Zoologico zoologico) {
+        System.out.println("Estas son las zonas a las que puedes acceder");
+        zoologico.mostrarZonas();
+        System.out.println("Seleciona el numero de la zona para acceder a ella");
+
+        do {
+            try {
+                seleccion = scanner.nextInt();
+                if (seleccion > 0 && seleccion <= zoologico.getZonas().size()) {
+                    Zona zonaSeleccionada = zoologico.getZonas().get(seleccion - 1);
+                    System.out.println("Has seleccionado la zona: " + zonaSeleccionada.getNombre());
+                } else {
+                    System.out.println("Selección no válida. Intenta de nuevo.");
+                }
+            } catch (Exception e) {
+                System.out.println("Selecciona una opcion disponible");
+                scanner.nextLine();
+            }
+
+        } while (true);
 
     }
-
 }

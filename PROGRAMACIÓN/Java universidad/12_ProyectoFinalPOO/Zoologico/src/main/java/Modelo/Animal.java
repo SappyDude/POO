@@ -1,4 +1,4 @@
-  package Modelo;
+package Modelo;
 
 public abstract class Animal {
 
@@ -13,6 +13,13 @@ public abstract class Animal {
 
     //Constructor de la clase  
     public Animal() {
+        this.nombre = "";
+        this.nombreCientifico = "";
+        this.edad = 0;
+        this.peso = 0;
+        this.esPeligroso = false;
+        this.habitatNatural = "";
+        this.dieta = "";
     }
 
     //Constructor parametrizado de la clase
@@ -27,6 +34,14 @@ public abstract class Animal {
     }
 
     //Gets and Sets de la clase
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public String getNombreCientifico() {
         return nombreCientifico;
     }
@@ -51,7 +66,7 @@ public abstract class Animal {
         this.peso = peso;
     }
 
-    public boolean isEsPeligroso() {
+    public boolean esPeligroso() {
         return esPeligroso;
     }
 
@@ -87,11 +102,9 @@ public abstract class Animal {
     }
 
     //Métodos abstractos
-    public abstract void comer();
+    public abstract String darDeComer(String comida);
 
-    public abstract void acariciar();
+    public abstract String acariciar();
 
-    public abstract void abrazar();
-
-    public abstract void darDecomer();
+    public abstract void datosDelAnimal();
 }

@@ -6,6 +6,8 @@ import Modelo.Zoologico;
 import java.util.Scanner;
 import Controlador.ZoologicoControlador;
 import Modelo.Zona;
+import Controlador.ZonaControlador;
+import Modelo.Animal;
 
 //El menu realizado para la vista del usuario, es parecido a inception
 //Donde se ingresa a zonas especificas dependiendo a lo que el usuario elija
@@ -13,6 +15,7 @@ public class VistaZoologico {
 
     //Creacion de objetos reutilizables durante esta clase
     public static ZoologicoControlador zoologicoControlador = new ZoologicoControlador();
+    public static ZonaControlador zonaControlador = new ZonaControlador();
     public static Scanner scanner = new Scanner(System.in);
     public static int seleccion;
 
@@ -33,7 +36,7 @@ public class VistaZoologico {
                                    3. Modo administrador
                                    4. Salir""");
                 seleccion = scanner.nextInt();
-
+                scanner.nextLine();
                 //Opciones específicas de la primera pantalla
                 switch (seleccion) {
 
@@ -44,8 +47,8 @@ public class VistaZoologico {
                         zoologico.agregarVisitante(visitante);
                         visitante.setVisitasHechas();
                         System.out.println("Bienvenido " + visitante.getNombre());
-
-                        seleccionZona(zoologico);
+                        //Entra a la seleccion de la zona
+                        pantallaSeleccionZona(zoologico, visitante);
                         checkerPrincipal = false;
                         break;
 
@@ -56,7 +59,7 @@ public class VistaZoologico {
                         // La base de datos para los distintos usuarios
                         visitanteInicioSesion.setVisitasHechas();
                         System.out.println("Bienvenido " + visitanteInicioSesion.getNombre());
-                        seleccionZona(zoologico);
+                        pantallaSeleccionZona(zoologico, visitanteInicioSesion);
                         checkerPrincipal = false;
                         break;
 
@@ -79,9 +82,7 @@ public class VistaZoologico {
             } catch (Exception e) {
                 scanner.nextLine();
                 System.out.println("Ingresaste algo erroneo");
-
                 checkerPrincipal = true;
-
             }
         }
     }
@@ -89,7 +90,7 @@ public class VistaZoologico {
     //Método designado para la opción 3(MODO ADMINISTRADOR)
     public boolean PantallaAdministrador(Zoologico zoologico) {
         //Menú de opciones del MODO ADMINISTRADOR
-       
+
         System.out.print("""
                         Inicio de administrador correcta
                         Seleccione que desea hacer:
@@ -108,18 +109,14 @@ public class VistaZoologico {
             //
             case 1:
                 System.out.println("¿Que visitante desea buscar?");
-
                 zoologicoControlador.rastrearVisitante(zoologico, scanner.nextLine());
-
                 return false;
             case 2:
 
                 return false;
-
             case 3:
 
                 return false;
-
             case 4:
                 System.out.print("\n");
                 return true;
@@ -131,25 +128,60 @@ public class VistaZoologico {
     }
 
     //Método designado para la selección de la zona por parte del cliente
-    public void seleccionZona(Zoologico zoologico) {
+    public void pantallaSeleccionZona(Zoologico zoologico, Visitante visitante) {
         System.out.println("Estas son las zonas a las que puedes acceder");
+
+        //Print de las zonas actuales
         zoologico.mostrarZonas();
         System.out.println("Seleciona el numero de la zona para acceder a ella");
 
+        //Aqui obtenemos una zona
+        Zona zonaSeleccionada = zoologicoControlador.seleccionZonaVisitante(zoologico);
+
+        //Aqui asignamos al visitante a la zona
+        zonaSeleccionada.setVisitantesPorZona(visitante);
+
+        //Pasamos a la informacion de la zona
+        pantallaInformacionZona(zonaSeleccionada, visitante);
+
+    }
+
+    /*
+        AQUI LLAMAMOS AL CONTROLADOR DE LA ZONA.
+        1.Mostrar los animales de la zona CHECK 
+            1.1 Saber acerca de los animales ONWORK
+            1.2 Interaccion individual con los animales de la zona ONWORK
+            1.3 Cambiar de la zona (quitarUsuarioDeLaZonaActual[metodo]) ONWORK
+        2.Cambiar de zona
+     */
+    public boolean pantallaInformacionZona(Zona zona, Visitante visitante) {
+        System.out.println("""
+                           Selecciona una de las opciones disponibles
+                           1.Mostrar los animales en la zona
+                           2.Salir                           
+                           """);
+        seleccion = scanner.nextInt();
+        scanner.nextLine();
         do {
             try {
-                seleccion = scanner.nextInt();
-                if (seleccion > 0 && seleccion <= zoologico.getZonas().size()) {
-                    Zona zonaSeleccionada = zoologico.getZonas().get(seleccion - 1);
-                    System.out.println("Has seleccionado la zona: " + zonaSeleccionada.getNombre());
-                } else {
-                    System.out.println("Selección no válida. Intenta de nuevo.");
+                switch (seleccion) {
+                    case 1:
+                        System.out.println("Estos son los animales en la zona: " + zona.getNombre());
+                        zonaControlador.seleccionAnimal(zona);
+                        //ONWORK, ya se tiene el animal seleccionado, por lo que ahora
+                        //Hace hacer las interaccions individuales con los visitantes
+                        //Dependiendo de que tipo de animal es
+                        return true;
+                    case 2:
+
+                        return false;
+                    default:
+                        scanner.nextLine();
+                        
+                        throw new AssertionError();
                 }
             } catch (Exception e) {
-                System.out.println("Selecciona una opcion disponible");
-                scanner.nextLine();
             }
-
         } while (true);
 
     }

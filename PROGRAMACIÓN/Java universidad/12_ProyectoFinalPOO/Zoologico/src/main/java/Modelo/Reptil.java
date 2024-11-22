@@ -1,7 +1,7 @@
 package Modelo;
 
 public class Reptil extends Animal {
-   
+
     //Atributos de la clase
     private boolean esVenenoso;
     private String tipoDeEscamas;
@@ -20,10 +20,13 @@ public class Reptil extends Animal {
         this.tipoSangre = tipoSangre;
         this.formaApareamiento = formaApareamiento;
     }
-    
+
     //Gets and Sets
-    public boolean esVenenoso() {
-        return esVenenoso;
+    public String esVenenoso() {
+        if (esVenenoso == true) {
+            return "es venenoso";
+        }
+        return "no es venenoso";
     }
 
     public void setEsVenenoso(boolean esVenenoso) {
@@ -53,26 +56,102 @@ public class Reptil extends Animal {
     public void setFormaApareamiento(String formaApareamiento) {
         this.formaApareamiento = formaApareamiento;
     }
-        
+
+    //Gets and Sets heredados
+    @Override
+    public String getNombre() {
+        return nombre;
+    }
+
+    @Override
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String getNombreCientifico() {
+        return nombreCientifico;
+    }
+
+    @Override
+    public void setNombreCientifico(String nombreCientifico) {
+        this.nombreCientifico = nombreCientifico;
+    }
+
+    @Override
+    public int getEdad() {
+        return edad;
+    }
+
+    @Override
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    @Override
+    public float getPeso() {
+        return peso;
+    }
+
+    @Override
+    public void setPeso(float peso) {
+        this.peso = peso;
+    }
+
+    @Override
+    public boolean esPeligroso() {
+        return esPeligroso;
+    }
+
+    @Override
+    public void setEsPeligroso(boolean esPeligroso) {
+        this.esPeligroso = esPeligroso;
+    }
+
+    @Override
+    public String getHabitatNatural() {
+        return habitatNatural;
+    }
+
+    @Override
+    public void setHabitatNatural(String habitatNatural) {
+        this.habitatNatural = habitatNatural;
+    }
+
+    @Override
+    public String getDieta() {
+        return dieta;
+    }
+
+    @Override
+    public void setDieta(String dieta) {
+        this.dieta = dieta;
+    }
+
     //Métodos polimórficos
     @Override
-    public void comer() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String darDeComer(String comida) {
+        if (dieta == comida) {
+            return "El animal esta comiendo: " + dieta;
+        }
+        return "El animal no puede comer eso";
     }
 
     @Override
-    public void acariciar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public String acariciar() {
+        if (esPeligroso == false) {
+            return "Has acariciado al " + nombre;
+        }
+        return "No puedes tocar un animal peligroso";
     }
 
     @Override
-    public void abrazar() {
+    public void datosDelAnimal() {
+        mostrarDetalles();
+        System.out.println("El reptil " + esVenenoso());
+        System.out.println("Su tipo de escamas son: " + tipoDeEscamas);
+        System.out.println("Este reptil es de " + tipoSangre);
+        System.out.println("Estos son " + formaApareamiento);
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-
-    @Override
-    public void darDecomer() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

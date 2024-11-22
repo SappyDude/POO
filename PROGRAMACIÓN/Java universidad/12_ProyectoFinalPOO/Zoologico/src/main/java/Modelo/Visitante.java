@@ -70,4 +70,18 @@ public class Visitante {
     public void setInteraccion(String interaccion) {
         this.interaccion = interaccion;
     }
+
+    public LinkedList obtenerListaInteracciones() {
+        return interacciones;
+    }
+
+    public void agregarInteraccion(String interaccion) {
+        interacciones.add(interaccion);
+    }
+
+    public void mostrarInteracciones() {
+        for (int i = 0; i < interacciones.size(); i++) {
+            System.out.println(interacciones.get(i));
+        }
+    }
 }

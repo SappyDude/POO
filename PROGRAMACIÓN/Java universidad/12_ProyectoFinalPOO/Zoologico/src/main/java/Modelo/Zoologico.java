@@ -42,15 +42,8 @@ public class Zoologico {
     public ArrayList<Zona> getZonas() {
         return zonas;
     }
+
 //Métodos utilizados en esta clase
-
-    public void agregarVisitante(Visitante visitante) {
-        if (visitantesTotales == null) {
-            visitantesTotales = new ArrayList<>(); // Inicializa la lista si no está inicializada
-        }
-        visitantesTotales.add(visitante);
-    }
-
     public void agregarZona(Zona zona) {
         zonas.add(zona);
     }
@@ -63,7 +56,6 @@ public class Zoologico {
             System.out.println("- Cantidad de animales: " + zonas.get(i).getCantidadOcupada());
         }
     }
-//el .agregarAnimal
 
     public void intentarAgregarAnimal(Animal animal) {
         for (int i = 0; i < zonas.size(); i++) {
@@ -71,20 +63,27 @@ public class Zoologico {
         }
     }
 
-    public void imprimirVisitantes(){
+    public void agregarVisitante(Visitante visitante) {
+        if (visitantesTotales == null) {
+            visitantesTotales = new ArrayList<>(); // Inicializa la lista si no está inicializada
+        }
+        visitantesTotales.add(visitante);
+    }
+
+    public void imprimirVisitantes() {
         for (int i = 0; i < visitantesTotales.size(); i++) {
             System.out.println(visitantesTotales.get(i).getNombre());
         }
     }
-    
-    public int recorrerIds(int id) throws Exception{
+
+    public int recorrerIds(int id) throws Exception/*NECESARIAS LAS EXCEPCIONES PERSONALIZADAS*/ {
         for (int i = 0; i < visitantesTotales.size(); i++) {
             if (id == visitantesTotales.get(i).getIdentificacion()) {
-                throw new Exception("No se puede usar el mismo id que otra persona");
+                System.out.println("\"No se puede usar el mismo id que otra persona\"");
+                throw new Exception();
             }
         }
         return id;
     }
-//  public void quitarVisitante(Visitante visitante) {
-//  }
+
 }

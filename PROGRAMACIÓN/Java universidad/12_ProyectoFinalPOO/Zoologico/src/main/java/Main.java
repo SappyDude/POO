@@ -11,7 +11,7 @@ import Vista.VistaZoologico;
     a la lista de las distintas interacciones que existen de forma general
  */
 public class Main {
-
+    
     public static void main(String[] args) {
         //Objeto encargado de guardar datos necesarios
         Zoologico zoologico = new Zoologico();

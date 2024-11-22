@@ -65,8 +65,12 @@ public class Zona {
     public void setVisitantesPorZona(Visitante visitante) {
         visitantesPorZona.add(visitante);
     }
-    //Métodos de la clase
 
+    public ArrayList<Animal> getAnimales() {
+        return animales;
+    }
+
+    //Métodos de la clase
     public boolean agregarAnimal(Animal animal) {
         if (!animal.getHabitatNatural().equals(this.habitat)) {
             return false;
@@ -79,13 +83,19 @@ public class Zona {
         return true;
     }
 
-    public void mostrarAnimales() {
+    public void mostrarAnimalesEnLaZona() {
         for (int i = 0; i < animales.size(); i++) {
-            if (animales.get(i).getClass() == Mamifero.class) {
-                System.out.println("el mamifero se ha guardado");
-                animales.get(i).getNombreCientifico();
-            }
+            System.out.println((i + 1) + ". " + animales.get(i).nombre);
         }
     }
 
+    public boolean removerVisitanteDeZona(Visitante visitante) {
+        for (int i = 0; i < visitantesPorZona.size(); i++) {
+            if (visitante == visitantesPorZona.get(i)) {
+                visitantesPorZona.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

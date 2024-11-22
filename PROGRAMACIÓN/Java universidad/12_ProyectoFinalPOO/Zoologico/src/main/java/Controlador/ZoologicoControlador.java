@@ -1,22 +1,10 @@
 package Controlador;
-//Importaciones de otras clases
 
-import Modelo.Ave;
-import Modelo.Mamifero;
-import Modelo.Reptil;
-import Modelo.Visitante;
-import Modelo.Zona;
-import Modelo.Zoologico;
+//Importaciones de otras clases
+import Modelo.*;
 import Vista.VistaZoologico;
 import java.util.Scanner;
 
-//notas de lo realizado:
-//instanciacion de visitantes y zonas, para proximamente hacer las estadisticas
-//queda pendiente la segunda opcion del menu, iniciar sesion
-//hacer la comparacion del input del id con los existentes y hacer la 
-//validacion 
-//Esta clase controladora, se encarga de la mayor de funcionalidades que 
-//pueda llegar a tener la clase zoologico.
 public class ZoologicoControlador {
 
     //Scanner del input por consola del usuario
@@ -65,12 +53,29 @@ public class ZoologicoControlador {
         Visitante visitante20 = new Visitante(20, "Hector Aguilar", 37);
 
         //Agregar los visitantes a la lista de VISITANTES en ZOOLOGICO
-        //PENDIENTE
         zoologico.agregarVisitante(visitante1);
-        zoologico.imprimirVisitantes();
+        zoologico.agregarVisitante(visitante2);
+        zoologico.agregarVisitante(visitante3);
+        zoologico.agregarVisitante(visitante4);
+        zoologico.agregarVisitante(visitante5);
+        zoologico.agregarVisitante(visitante6);
+        zoologico.agregarVisitante(visitante7);
+        zoologico.agregarVisitante(visitante8);
+        zoologico.agregarVisitante(visitante9);
+        zoologico.agregarVisitante(visitante10);
+        zoologico.agregarVisitante(visitante11);
+        zoologico.agregarVisitante(visitante12);
+        zoologico.agregarVisitante(visitante13);
+        zoologico.agregarVisitante(visitante14);
+        zoologico.agregarVisitante(visitante15);
+        zoologico.agregarVisitante(visitante16);
+        zoologico.agregarVisitante(visitante17);
+        zoologico.agregarVisitante(visitante18);
+        zoologico.agregarVisitante(visitante19);
+        zoologico.agregarVisitante(visitante20);
 
         //Agregar los visitantes a la lista de VISITANTES en ZONA        
-        zoologico.getZonas().get(1).setVisitantesPorZona(visitante1);
+        zoologico.getZonas().get(0).setVisitantesPorZona(visitante1);
         zoologico.getZonas().get(0).setVisitantesPorZona(visitante2);
         zoologico.getZonas().get(0).setVisitantesPorZona(visitante3);
         zoologico.getZonas().get(0).setVisitantesPorZona(visitante4);
@@ -90,8 +95,6 @@ public class ZoologicoControlador {
         zoologico.getZonas().get(4).setVisitantesPorZona(visitante18);
         zoologico.getZonas().get(4).setVisitantesPorZona(visitante19);
         zoologico.getZonas().get(4).setVisitantesPorZona(visitante20);
-
-        //
     }
 
     //Crear instancias de animales
@@ -112,6 +115,7 @@ public class ZoologicoControlador {
         Ave buhoReal = new Ave(true, "Marrón y blanco", 15, "Cuidados nocturnos", "Búho real", "Bubo bubo", 8, 3.2f, false, "Clima templado y vegetacion densa", "Roedores");
         Reptil lagartoComun = new Reptil(false, "Escamas finas", "Sangre fría", "Ovíparo", "Lagarto común", "Lacerta agilis", 2, 0.2f, false, "Clima templado y vegetacion densa", "Insectos");
 
+        //Se agregan los animales a la ZONA
         zoologico.intentarAgregarAnimal(mono);
         zoologico.intentarAgregarAnimal(guacamaya);
         zoologico.intentarAgregarAnimal(boa);
@@ -127,6 +131,7 @@ public class ZoologicoControlador {
         zoologico.intentarAgregarAnimal(osoPardo);
         zoologico.intentarAgregarAnimal(buhoReal);
         zoologico.intentarAgregarAnimal(lagartoComun);
+
     }
 
     public Visitante registrarVisitante(Zoologico zoologico) throws Exception {
@@ -180,19 +185,18 @@ public class ZoologicoControlador {
                 }
             }
         } while (checker);
-        vistaZoologico.seleccionZona(zoologico);
         return visitante;
     }
 
-    //Este método se encarga de verificar y agregar una visita de un usuario
-    //ya registrado en el sistema
+    /*Este método se encarga de verificar 
+    y agregar una visita de un usuario ya registrado en el sistema*/
     public Visitante iniciarSesion(int id, Zoologico zoologico) {
         Visitante visitanteTemporal = null;
+
         for (int i = 0; i < zoologico.getVisitantes().size(); i++) {
             if (id == zoologico.getVisitantes().get(i).getIdentificacion()) {
                 zoologico.getVisitantes().get(i).getIdentificacion();
                 visitanteTemporal = zoologico.getVisitantes().get(i);
-                vistaZoologico.seleccionZona(zoologico);
             }
         }
         return visitanteTemporal;
@@ -207,6 +211,7 @@ public class ZoologicoControlador {
         do {
             contraseñaInput = scanner.nextLine();
             if (contraseñaInput.equals(zoologico.getContraseña())) {
+
                 //Aqui se llama un objeto para hacer uso del metodo PantallaAdmin
                 VistaZoologico vistaZoologico = new VistaZoologico();
 
@@ -214,31 +219,29 @@ public class ZoologicoControlador {
                 vistaZoologico.PantallaAdministrador(zoologico);
                 return true;
             } else {
-
                 iniciarSesionAdminChecker = rectificador();
                 System.out.println("Vuelva a ingresar la contraseña");
-
             }
         } while (iniciarSesionAdminChecker);
         return true;
     }
 
+    //Este rectificador, es una solucion temporal a la falta de excepciones
     public boolean rectificador() {
         System.out.println("""
                                    vuelva a intentarlo
                                    1. Volver a intentar
                                    2. Salir""");
         int seleccion = scanner.nextInt();
-
+        scanner.nextLine();
         if (seleccion == 2) {
-            scanner.nextLine();
             return false;
         } else {
-            scanner.nextLine();
             return true;
         }
     }
 
+    //Encargado de ver donde está ubicado el visitante
     public void rastrearVisitante(Zoologico zoologico, String nombre) {
         for (int i = 0; i < zoologico.getZonas().size(); i++) {
             for (int j = 0; j < zoologico.getZonas().get(i).getVisitantesPorZona().size(); j++) {
@@ -251,6 +254,27 @@ public class ZoologicoControlador {
     }
 
     public void agregarZona() {
+    }
 
+    public Zona seleccionZonaVisitante(Zoologico zoologico) {
+        do {
+            try {
+                int seleccion = scanner.nextInt();
+                //En este caso, se utiliza un if y usamos el && para parametrizar 
+                //las zonas. No se usa un switch case debido a que la lista de 
+                //zonas es dinamica, es decir, se puede modificar, por lo que
+                //se crearan casos no instanciados en la logica del codigo
+                if (seleccion > 0 && seleccion <= zoologico.getZonas().size()) {
+                    Zona zonaSeleccionada = zoologico.getZonas().get(seleccion - 1);
+                    System.out.println("Has seleccionado la zona: " + zonaSeleccionada.getNombre());
+                    return zonaSeleccionada;
+                } else {
+                    System.out.println("Selección no válida. Intenta de nuevo.");
+                }
+            } catch (Exception e) {
+                System.out.println("Selecciona una opcion disponible");
+                scanner.nextLine();
+            }
+        } while (true);
     }
 }

@@ -79,11 +79,10 @@ public class Zoologico {
     public int recorrerIds(int id) throws Exception/*NECESARIAS LAS EXCEPCIONES PERSONALIZADAS*/ {
         for (int i = 0; i < visitantesTotales.size(); i++) {
             if (id == visitantesTotales.get(i).getIdentificacion()) {
-                System.out.println("\"No se puede usar el mismo id que otra persona\"");
+                System.out.println("\nNo se puede usar el mismo id que otra persona");
                 throw new Exception();
             }
         }
         return id;
     }
-
 }

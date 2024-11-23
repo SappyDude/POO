@@ -131,7 +131,7 @@ public class Reptil extends Animal {
     //Métodos polimórficos
     @Override
     public String darDeComer(String comida) {
-        if (dieta == comida) {
+        if (dieta.equals(comida)) {
             return "El animal esta comiendo: " + dieta;
         }
         return "El animal no puede comer eso";
@@ -139,7 +139,7 @@ public class Reptil extends Animal {
 
     @Override
     public String acariciar() {
-        if (esPeligroso == false) {
+        if (esPeligroso == false || esVenenoso == true) {
             return "Has acariciado al " + nombre;
         }
         return "No puedes tocar un animal peligroso";
@@ -147,11 +147,15 @@ public class Reptil extends Animal {
 
     @Override
     public void datosDelAnimal() {
-        mostrarDetalles();
+        super.mostrarDetalles();
         System.out.println("El reptil " + esVenenoso());
         System.out.println("Su tipo de escamas son: " + tipoDeEscamas);
         System.out.println("Este reptil es de " + tipoSangre);
-        System.out.println("Estos son " + formaApareamiento);
+        System.out.println("Estos son " + formaApareamiento + "\n");
+    }
+
+    @Override
+    public String observar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

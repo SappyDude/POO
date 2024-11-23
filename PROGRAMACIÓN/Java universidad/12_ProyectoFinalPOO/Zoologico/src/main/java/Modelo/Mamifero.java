@@ -140,11 +140,16 @@ public class Mamifero extends Animal {
     }
 
     @Override
-    public void datosDelAnimal() {
-        mostrarDetalles();
-        System.out.println("El mamifero " + getPelaje());;
-        System.out.println("Su temperatura corporal es de: " + temperaturaCorporal + "");
-        System.out.println("El mamifero " + getEsNocturno());
+    public String observar() {
+        return "El animal existe(no se que poner)";
     }
 
+    //Herencia
+    @Override
+    public void datosDelAnimal() {
+        super.mostrarDetalles();
+        System.out.println("El mamifero " + getPelaje());;
+        System.out.println("Su temperatura corporal es de: " + temperaturaCorporal + "°C");
+        System.out.println("El mamifero " + getEsNocturno() + "\n");
+    }
 }

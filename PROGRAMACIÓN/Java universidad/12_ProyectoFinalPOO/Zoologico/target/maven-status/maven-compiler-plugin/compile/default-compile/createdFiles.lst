@@ -4,6 +4,7 @@ Modelo\Zona.class
 Modelo\Zoologico.class
 Controlador\ZonaControlador.class
 Modelo\Reptil.class
+Controlador\VisitanteControlador.class
 Modelo\Mamifero.class
 Controlador\ZoologicoControlador.class
 Vista\VistaZoologico.class

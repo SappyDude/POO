@@ -57,7 +57,7 @@ public class Ave extends Animal {
     public void setCuidadoEspecial(String cuidadoEspecial) {
         this.cuidadoEspecial = cuidadoEspecial;
     }
-    
+
     //Gets and Sets heredados
     @Override
     public String getNombre() {
@@ -131,11 +131,6 @@ public class Ave extends Animal {
 
     //Métodos polimórficos
     @Override
-    public void mostrarDetalles() {
-        System.out.println("hijo");
-    }
-
-    @Override
     public String darDeComer(String comida) {
         if (dieta == comida) {
             return "El animal esta comiendo: " + dieta;
@@ -153,10 +148,15 @@ public class Ave extends Animal {
 
     @Override
     public void datosDelAnimal() {
-        mostrarDetalles();
+        super.mostrarDetalles();
         System.out.println("Este ave " + getPuedeVolar());
         System.out.println("El color de su plumaje es " + colorPlumaje);
-        System.out.println("Suelen vivir durante " + longevidad + "anios");
-        System.out.println("Su cuidado especial es: " + cuidadoEspecial);
+        System.out.println("Suelen vivir durante " + longevidad + " anios");
+        System.out.println("Su cuidado especial es: " + cuidadoEspecial + "\n");
+    }
+
+    @Override
+    public String observar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

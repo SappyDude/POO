@@ -1,28 +1,62 @@
 package Controlador;
 
-import Modelo.Animal;
-import Modelo.Visitante;
+import Modelo.Zoologico;
+import java.util.Scanner;
 
 /**
  * @author SappyDude
  */
 public class VisitanteControlador {
 
-    public void interaccionVisitante(Animal animalSeleccionado, Visitante visitante) {
+    public Scanner scanner = new Scanner(System.in);
 
-        System.out.println("""
-                           Seleccione que interaccion desea hacer con el animal
-                           1. Dar de comer
-                              //Que alimento deseas darle de comer
-                              1.Carne
-                              2.Frutas
-                           2. Acariciar
-                           3. Observar
-                           4. Regresar
-                           
-                           
-                           """);
-        animalSeleccionado.acariciar();
-        System.out.println();
+    //Pide el id del visitante
+    public int agregarIdVisitante(Zoologico zoologico) {
+        boolean checkerAgregarIdVisitante = true;
+        do {
+            try {
+                int id;
+                System.out.print("Ingresa tu identificacion: ");
+                id = zoologico.recorrerIds(scanner.nextInt());
+                scanner.nextLine();
+                return id;
+            } catch (Exception e) {
+                scanner.nextLine();
+            }
+        } while (checkerAgregarIdVisitante);
+        return 0;
     }
+
+    //Pide el nombre del visitante
+    public String agregarNombreVisitante(Zoologico zoologico) {
+        boolean checkerAgregarNombreVisitante = true;
+        do {
+            try {
+                String Nombre;
+                System.out.print("Ingresa tu nombre: ");
+                Nombre = scanner.nextLine();
+                return Nombre;
+            } catch (Exception e) {
+            }
+        } while (checkerAgregarNombreVisitante);
+        return "";
+    }
+
+    //Pide la edad del visitante
+    public int agregarEdadVisitante(Zoologico zoologico) {
+        boolean checkerAgregarEdadVisitante = true;
+        do {
+            try {
+                int edad;
+                System.out.print("Ingresa tu edad: ");
+                edad = scanner.nextInt();
+                scanner.nextLine();
+                return edad;
+            } catch (Exception e) {
+                scanner.nextLine();
+            }
+        } while (checkerAgregarEdadVisitante);
+        return 0;
+    }
+
 }

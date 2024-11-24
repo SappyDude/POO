@@ -134,67 +134,11 @@ public class ZoologicoControlador {
 
     }
 
-    //Registra al visitante
-    public Visitante registrarVisitante(Zoologico zoologico) throws Exception {
-        //Variable verificadora de ingreso a menús
-        boolean checkerRegistrarVisitante = true;
-        Visitante visitante = new Visitante();
-        //Pide datos de id
-        //Queda pendiente si ingresa un id igual a el de otro usuario, nopermitir crearlo
-        do {
-            try {
-                System.out.print("Ingresa tu identificacion: ");
-                //metodo para recorrer cada uno de los 
-                visitante.setIdentificacion(zoologico.recorrerIds(scanner.nextInt()));
-                scanner.nextLine();
-                break;
-            } catch (Exception e) {
-                checkerRegistrarVisitante = rectificador();//Al 2.Salir, presenta "Ingresaste algo erroneo"
-                //Al arrojar esta excepcion, 
-                if (checkerRegistrarVisitante == true) {
-                } else {
-                    throw new Exception();
-                }
-            }
-        } while (checkerRegistrarVisitante);
-
-        //Pide datos de nombre
-        do {
-            try {
-                System.out.print("Ingresa tu nombre: ");
-                visitante.setNombre(scanner.nextLine());
-                break;
-            } catch (Exception e) {
-                scanner.nextLine(); //pendiente para hacer la clase exception personalizada
-            }
-        } while (checkerRegistrarVisitante);
-
-        //Pide datos de edad
-        do {
-            try {
-                System.out.print("Ingresa tu edad: ");
-                visitante.setEdad(scanner.nextInt());
-                scanner.nextLine();
-                break;
-            } catch (Exception e) {
-                scanner.nextLine();// pendiente hacer la clase exception personalizada
-                checkerRegistrarVisitante = rectificador();//Al 2.Salir, presenta "Ingresaste algo erroneo"
-                if (checkerRegistrarVisitante == true) {
-                } else {
-                    throw new Exception();
-                }
-            }
-        } while (checkerRegistrarVisitante);
-        return visitante;
-    }
-
     //Verifica y agregar una visita mas al visitante
     public Visitante iniciarSesion(int id, Zoologico zoologico) {
         Visitante visitanteTemporal = null;
-
         for (int i = 0; i < zoologico.getVisitantes().size(); i++) {
             if (id == zoologico.getVisitantes().get(i).getIdentificacion()) {
-                zoologico.getVisitantes().get(i).getIdentificacion();
                 visitanteTemporal = zoologico.getVisitantes().get(i);
             }
         }
@@ -203,76 +147,82 @@ public class ZoologicoControlador {
 
     //Lógica para la opcion 3 (MODO ADMINISTRADOR)
     public void iniciarSesionAdmin(Zoologico zoologico) {
+
+        //Atributos utilizados en el metodo
         boolean iniciarSesionAdminChecker = true;
         String contraseñaInput;
-        System.out.println("Ingrese la contrasenia del administrador: ");
-        //Verificar si la contraseña que se pone, es la correcta
-        contraseñaInput = scanner.nextLine();
+
         do {
             try {
+                System.out.print("Ingrese la contrasenia del administrador: ");
+
+                //Verificar si la contraseña que se pone, es la correcta
+                contraseñaInput = scanner.nextLine();
                 if (contraseñaInput.equals(zoologico.getContraseña())) {
+
                     //Aqui se llama un objeto para hacer uso del metodo PantallaAdmin
                     VistaZoologico vistaZoologico = new VistaZoologico();
 
-                    //Llamo al metodo para entrar a la pantalla del admin
-                    iniciarSesionAdminChecker = vistaZoologico.PantallaAdministrador(zoologico);
+                    //Llama al metodo para entrar a la pantalla del admin
+                    vistaZoologico.PantallaAdministrador(zoologico);
+                    iniciarSesionAdminChecker = false;
                 } else {
+
+                    //Pregunta si desea volver a intentarlo
                     iniciarSesionAdminChecker = rectificador();
                 }
             } catch (Exception e) {
+
+                //Falta agregar las exceciones
                 System.out.println("Algo imprevisto sucedio");
                 iniciarSesionAdminChecker = true;
             }
         } while (iniciarSesionAdminChecker);
-
-    }
-
-    //Lógica para la opción 3 (MODO ADMINISTRADOR)
-    public void agregarZona() {
-    }
-
-    //Este rectificador, es una solucion temporal a la falta de excepciones
-    public boolean rectificador() throws Exception {
-        System.out.println("""
-                                   1. Volver a intentar
-                                   2. Salir""");
-        int seleccion = scanner.nextInt();
-        scanner.nextLine();
-        if (seleccion == 1) {
-            return true;
-        } else if (seleccion == 2) {
-            return false;
-        }
-        throw new Exception();
     }
 
     //Encargado de ver donde está ubicado el visitante
-    public String rastrearVisitante(Zoologico zoologico, String nombre) {
+    public String rastrearVisitante(Zoologico zoologico, int posicion) {
+
+        //Atributos utilizadas en el metodo
+        int indiceVisitante = posicion - 1;
+        int indiceGlobal = 0;
+
+        //Recorre el indice de la zona dentro del zoologico 
         for (int i = 0; i < zoologico.getZonas().size(); i++) {
+
+            //Recorre los visitantes en cada zona
             for (int j = 0; j < zoologico.getZonas().get(i).getVisitantesPorZona().size(); j++) {
-                Visitante visitante = zoologico.getZonas().get(i).getVisitantesPorZona().get(j);
-                if (visitante.getNombre().equals(nombre)) {
-                    return "El visitante se encuentra en la zona: " + zoologico.getZonas().get(i).getNombre();
+
+                //Si el indiceGlobal es el mismo, entonces retorna la zona
+                if (indiceGlobal == indiceVisitante) {
+                    return "\nEl visitante " + zoologico.getZonas().get(i).getVisitantesPorZona().get(j).getNombre()
+                            + " se encuentra en la zona: " + zoologico.getZonas().get(i).getNombre();
                 }
+                indiceGlobal++; // Incrementa el índice global al avanzar entre visitantes
             }
         }
-        return "El visitante no se encuentra en ninguna zona";
+
+        // Mensaje si no se encuentra al visitante
+        return "El visitante no se encuentra actualmente en el zoologico.";
     }
 
-    //
+    //Encargado de seleccionar la zona que el visitante desee
     public Zona seleccionZonaVisitante(Zoologico zoologico) {
-        boolean checkerSeleccionZonaVisitante = true;// PENDIENTE DE IMPLEMENTAR
+        boolean checkerSeleccionZonaVisitante = true;
+
+// PENDIENTE DE IMPLEMENTAR para el cambio de zona
         do {
             try {
                 int seleccion = scanner.nextInt();
                 scanner.nextLine();
+
                 //En este caso, se utiliza un if y usamos el && para parametrizar 
                 //las zonas. No se usa un switch case debido a que la lista de 
                 //zonas es dinamica, es decir, se puede modificar, por lo que
                 //se crearan casos no instanciados en la logica del codigo
                 if (seleccion > 0 && seleccion <= zoologico.getZonas().size()) {
                     Zona zonaSeleccionada = zoologico.getZonas().get(seleccion - 1);
-                    System.out.println("Has seleccionado la zona: " + zonaSeleccionada.getNombre());
+                    System.out.print("\nEstas en la zona " + zonaSeleccionada.getNombre());
                     return zonaSeleccionada;
                 } else {
                     System.out.println("Selección no válida. Intenta de nuevo.");
@@ -283,5 +233,24 @@ public class ZoologicoControlador {
             }
         } while (checkerSeleccionZonaVisitante);
         return null;
+    }
+
+    //Este rectificador, es una solucion temporal a la falta de excepciones
+    public boolean rectificador() throws Exception {
+        System.out.print("""
+                                   1. Volver a intentar
+                                   2. Salir
+                                   Seleccione que desea hacer: """);
+        int seleccion = scanner.nextInt();
+        scanner.nextLine();
+
+        //Trabaja en funcion de los checkers de cada menu
+        if (seleccion == 1) {
+            return true;
+        } else if (seleccion == 2) {
+            System.out.print("\n");
+            return false;
+        }
+        throw new Exception();
     }
 }

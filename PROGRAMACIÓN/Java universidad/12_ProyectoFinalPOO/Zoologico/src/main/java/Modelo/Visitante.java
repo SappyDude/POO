@@ -79,6 +79,7 @@ public class Visitante {
         interacciones.add(interaccion);
     }
 
+    //Métodos de la clase
     public void mostrarInteracciones() {
         for (int i = 0; i < interacciones.size(); i++) {
             System.out.println(interacciones.get(i));

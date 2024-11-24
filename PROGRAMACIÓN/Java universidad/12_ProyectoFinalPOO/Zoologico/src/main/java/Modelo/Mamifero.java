@@ -10,6 +10,9 @@ public class Mamifero extends Animal {
 
     //Constructor vacío de la clase
     public Mamifero() {
+        this.tienePelaje = false;
+        this.temperaturaCorporal = 0;
+        this.esNocturno = false;
     }
 
     //Constructor parametrizado de la clase
@@ -122,34 +125,30 @@ public class Mamifero extends Animal {
         this.dieta = dieta;
     }
 
+    @Override
+    public void mostrarDetalles() {
+        super.mostrarDetalles();
+        System.out.println("- El mamifero " + getPelaje());;
+        System.out.println("- Su temperatura corporal es de: " + temperaturaCorporal + "Celsius");
+        System.out.println("- El mamifero " + getEsNocturno() + "\n");
+    }
+
     //Métodos polimórficos
     @Override
-    public String darDeComer(String comida) {
-        if (dieta == comida) {
-            return "El animal esta comiendo: " + dieta;
-        }
-        return "El animal no puede comer eso";
+    public String observar() {
+        return "\nEl animal esta alerta de los otros animales\n";
+    }
+
+    @Override
+    public String darDeComer() {
+        return "\nEl animal esta comiendo\n";
     }
 
     @Override
     public String acariciar() {
         if (esPeligroso == false) {
-            return "Has acariciado al " + nombre;
+            return "\nHas acariciado al " + nombre + "\n";
         }
-        return "No puedes tocar un animal peligroso";
-    }
-
-    @Override
-    public String observar() {
-        return "El animal existe(no se que poner)";
-    }
-
-    //Herencia
-    @Override
-    public void datosDelAnimal() {
-        super.mostrarDetalles();
-        System.out.println("El mamifero " + getPelaje());;
-        System.out.println("Su temperatura corporal es de: " + temperaturaCorporal + "°C");
-        System.out.println("El mamifero " + getEsNocturno() + "\n");
+        return "\nNo puedes tocar un animal peligroso\n";
     }
 }

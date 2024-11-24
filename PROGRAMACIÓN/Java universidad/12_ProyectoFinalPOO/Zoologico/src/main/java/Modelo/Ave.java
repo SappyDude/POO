@@ -11,6 +11,10 @@ public class Ave extends Animal {
 
     //Constructor vacío de la clase
     public Ave() {
+        this.puedeVolar = false;
+        this.colorPlumaje = "";
+        this.longevidad = 0;
+        this.cuidadoEspecial = "";
     }
 
     //Constructor parametrizado de la clase
@@ -129,34 +133,32 @@ public class Ave extends Animal {
         this.dieta = dieta;
     }
 
+    @Override
+    public void mostrarDetalles() {
+        super.mostrarDetalles();
+        System.out.println("- Este ave " + getPuedeVolar());
+        System.out.println("- El color de su plumaje es " + colorPlumaje);
+        System.out.println("- Suelen vivir durante " + longevidad + " anios");
+        System.out.println("- Su cuidado especial es: " + cuidadoEspecial);
+    }
+
     //Métodos polimórficos
     @Override
-    public String darDeComer(String comida) {
-        if (dieta == comida) {
-            return "El animal esta comiendo: " + dieta;
-        }
-        return "El animal no puede comer eso";
+    public String observar() {
+        return "\nEl ave " + nombre + " reposa sobre un arbol en la zona\n";
+    }
+
+    @Override
+    public String darDeComer() {
+        return "\nEl animal esta comiendo\n";
     }
 
     @Override
     public String acariciar() {
         if (esPeligroso == false) {
-            return "Has acariciado al " + nombre;
+            return "\nHas acariciado al " + nombre + "\n";
         }
-        return "No puedes tocar un animal peligroso";
+        return "\nNo puedes tocar un animal peligroso\n";
     }
 
-    @Override
-    public void datosDelAnimal() {
-        super.mostrarDetalles();
-        System.out.println("Este ave " + getPuedeVolar());
-        System.out.println("El color de su plumaje es " + colorPlumaje);
-        System.out.println("Suelen vivir durante " + longevidad + " anios");
-        System.out.println("Su cuidado especial es: " + cuidadoEspecial + "\n");
-    }
-
-    @Override
-    public String observar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

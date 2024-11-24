@@ -10,6 +10,10 @@ public class Reptil extends Animal {
 
     //Constructor vacío de la clase
     public Reptil() {
+        this.esVenenoso = false;
+        this.tipoDeEscamas = "";
+        this.tipoSangre = "";
+        this.formaApareamiento = "";
     }
 
     //Constructor parametrizado
@@ -128,13 +132,24 @@ public class Reptil extends Animal {
         this.dieta = dieta;
     }
 
+    @Override
+    public void mostrarDetalles() {
+        super.mostrarDetalles();
+        System.out.println("- El reptil " + esVenenoso());
+        System.out.println("- Su tipo de escamas son: " + tipoDeEscamas);
+        System.out.println("- Este reptil es de " + tipoSangre);
+        System.out.println("- Es " + formaApareamiento + "\n");
+    }
+
     //Métodos polimórficos
     @Override
-    public String darDeComer(String comida) {
-        if (dieta.equals(comida)) {
-            return "El animal esta comiendo: " + dieta;
-        }
-        return "El animal no puede comer eso";
+    public String observar() {
+        return "El reptil " + nombre + "esta descansando";
+    }
+
+    @Override
+    public String darDeComer() {
+        return "El animal esta comiendo";
     }
 
     @Override
@@ -145,17 +160,4 @@ public class Reptil extends Animal {
         return "No puedes tocar un animal peligroso";
     }
 
-    @Override
-    public void datosDelAnimal() {
-        super.mostrarDetalles();
-        System.out.println("El reptil " + esVenenoso());
-        System.out.println("Su tipo de escamas son: " + tipoDeEscamas);
-        System.out.println("Este reptil es de " + tipoSangre);
-        System.out.println("Estos son " + formaApareamiento + "\n");
-    }
-
-    @Override
-    public String observar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

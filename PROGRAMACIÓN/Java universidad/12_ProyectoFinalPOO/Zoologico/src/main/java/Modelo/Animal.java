@@ -92,23 +92,21 @@ public abstract class Animal {
 
     //Métodos de la clase
     public void mostrarDetalles() {
-        System.out.println("Las caracteristicas del animal son:\n"
-                + "Nombre: " + nombre + "\n"
-                + "Nombre cientifico: " + nombreCientifico + "\n"
-                + "Edad del animal: " + edad + "  anios\n"
-                + "Peso: " + peso + "kg\n"
-                + "Su habitat natural es: " + habitatNatural + "\n"
-                + "Su alimentacion consiste de: " + dieta + "\n"
+        System.out.println("\n"
+                + "- " + nombre + "\n"
+                + "- Su nombre cientifico es " + nombreCientifico + "\n"
+                + "- Tiene " + edad + " anios\n"
+                + "- Pesa " + peso + "kg\n"
+                + "- Su habitat natural: " + habitatNatural + "\n"
+                + "- El animal es " + dieta
         );
     }
 
+    
     //Métodos abstractos
-    
     public abstract String observar();
-    
-    public abstract String darDeComer(String comida);
+
+    public abstract String darDeComer();
 
     public abstract String acariciar();
-
-    public abstract void datosDelAnimal();
 }

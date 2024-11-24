@@ -33,6 +33,7 @@ public class Zoologico {
 
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
+        System.out.println("Contrasenia cambiada correctamente");
     }
 
     public ArrayList<Visitante> getVisitantes() {
@@ -51,7 +52,7 @@ public class Zoologico {
     public void mostrarZonas() {
         for (int i = 0; i < zonas.size(); i++) {
             System.out.println("");
-            System.out.println((i + 1) + ". Nombre: " + zonas.get(i).getNombre());
+            System.out.println((i + 1) + ". " + zonas.get(i).getNombre());
             System.out.println("- Habitat: " + zonas.get(i).getHabitat());
             System.out.println("- Cantidad de animales: " + zonas.get(i).getCantidadOcupada());
         }
@@ -71,8 +72,9 @@ public class Zoologico {
     }
 
     public void imprimirVisitantes() {
+        System.out.println("\n Lista de visitantes");
         for (int i = 0; i < visitantesTotales.size(); i++) {
-            System.out.println(visitantesTotales.get(i).getNombre());
+            System.out.println((i + 1) + ". " + visitantesTotales.get(i).getNombre());
         }
     }
 

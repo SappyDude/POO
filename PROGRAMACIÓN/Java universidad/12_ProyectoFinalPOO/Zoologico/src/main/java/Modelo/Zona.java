@@ -58,6 +58,14 @@ public class Zona {
         this.cantidadOcupada += 1;
     }
 
+    public int getCantidadTotal() {
+        return cantidadTotal;
+    }
+
+    public void setCantidadTotal(int cantidadTotal) {
+        this.cantidadTotal = cantidadTotal;
+    }
+
     public ArrayList<Visitante> getVisitantesPorZona() {
         return visitantesPorZona;
     }
